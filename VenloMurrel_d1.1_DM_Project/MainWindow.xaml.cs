@@ -41,5 +41,14 @@ namespace VenloMurrel_d1._1_DM_Project
         {
             datagridVluchten.ItemsSource = DatabaseOperations.GewensteVluchtenZoeken(txtVertrek.Text, txtAankomst.Text);
         }
+
+        private void datagridVluchten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (datagridVluchten.SelectedItem is Vlucht vlucht)
+            {
+                VluchtBoeken vluchtBoeken = new VluchtBoeken();
+                vluchtBoeken.Show();
+            }
+        }
     }
 }

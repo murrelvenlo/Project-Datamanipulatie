@@ -63,9 +63,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <DataGrid x:Name="datagridVluchten" AutoGenerateColumns="False" Margin="5" >
+                <DataGrid x:Name="datagridVluchten" AutoGenerateColumns="False" Margin="5" SelectionChanged="datagridVluchten_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding id}" Header="Vluchtnummer"/>
+                        <DataGridTextColumn Binding="{Binding id}" Header="Vluchtnummer" />
                         <DataGridTextColumn Binding="{Binding datum}" Header="Datum"/>
                         <DataGridTextColumn Binding="{Binding Luchthaven1.stad}" Header="Vertrek"/>
                         <DataGridTextColumn Binding="{Binding vertrektijd}" Header="Vertektijd"/>
