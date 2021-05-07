@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Vluchten_DAL;
 
 namespace VenloMurrel_d1._1_DM_Project
 {
@@ -23,6 +24,18 @@ namespace VenloMurrel_d1._1_DM_Project
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnZoeken_Click(object sender, RoutedEventArgs e)
+        {
+            datagridVluchten.ItemsSource = DatabaseOperations.VluchtenZoeken(txtVertrek.Text, txtAankomst.Text);
+
+            
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //cmbKlasse.ItemsSource = DatabaseOperations.OphalenKlasse();
         }
     }
 }

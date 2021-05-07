@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VluchtenbeheerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Klasse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="klasseType" Type="nvarchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Luchthaven">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="IATA" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="stad" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="land" Type="nvarchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Passagier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="emailadres" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="voornaam" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="achternaam" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="telefoonnummer" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="geboortedatum" Type="date" Nullable="false" />
+          <Property Name="nationaliteit" Type="nvarchar" MaxLength="30" />
+          <Property Name="postcode" Type="nvarchar" MaxLength="6" />
+          <Property Name="plaats" Type="nvarchar" MaxLength="30" />
+          <Property Name="straat" Type="nvarchar" MaxLength="30" />
+          <Property Name="huisnummer" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Reservering">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="boekingscode" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="passagierId" Type="int" Nullable="false" />
+          <Property Name="klasseId" Type="int" Nullable="false" />
+          <Property Name="boekingsdatum" Type="date" Nullable="false" />
+          <Property Name="betaalmethode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="boekingsstatus" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Reserveringvlucht">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="reserveringId" Type="int" Nullable="false" />
+          <Property Name="vluchtId" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vlucht">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="toestelId" Type="int" Nullable="false" />
+          <Property Name="bestemming" Type="int" Nullable="false" />
+          <Property Name="vertrek" Type="int" Nullable="false" />
+          <Property Name="vertrektijd" Type="datetime" Nullable="false" />
+          <Property Name="aankomsttijd" Type="datetime" Nullable="false" />
+          <Property Name="vluchtprijs" Type="money" Nullable="false" />
+          <Property Name="datum" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Reservering_Klasse">
+          <End Role="Klasse" Type="Self.Klasse" Multiplicity="1" />
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klasse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservering">
+              <PropertyRef Name="klasseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservering_Passagier">
+          <End Role="Passagier" Type="Self.Passagier" Multiplicity="1" />
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passagier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservering">
+              <PropertyRef Name="passagierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserveringvlucht_Reservering">
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="1" />
+          <End Role="Reserveringvlucht" Type="Self.Reserveringvlucht" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservering">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reserveringvlucht">
+              <PropertyRef Name="reserveringId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserveringvlucht_Vlucht">
+          <End Role="Vlucht" Type="Self.Vlucht" Multiplicity="1" />
+          <End Role="Reserveringvlucht" Type="Self.Reserveringvlucht" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vlucht">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reserveringvlucht">
+              <PropertyRef Name="vluchtId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vlucht_Luchthaven_bestemming">
+          <End Role="Luchthaven" Type="Self.Luchthaven" Multiplicity="1" />
+          <End Role="Vlucht" Type="Self.Vlucht" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Luchthaven">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vlucht">
+              <PropertyRef Name="bestemming" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vlucht_Luchthaven_vertrek">
+          <End Role="Luchthaven" Type="Self.Luchthaven" Multiplicity="1" />
+          <End Role="Vlucht" Type="Self.Vlucht" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Luchthaven">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vlucht">
+              <PropertyRef Name="vertrek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VluchtenbeheerModelStoreContainer">
+          <EntitySet Name="Klasse" EntityType="Self.Klasse" Schema="Vluchtboeking" store:Type="Tables" />
+          <EntitySet Name="Luchthaven" EntityType="Self.Luchthaven" Schema="Vluchtboeking" store:Type="Tables" />
+          <EntitySet Name="Passagier" EntityType="Self.Passagier" Schema="Vluchtboeking" store:Type="Tables" />
+          <EntitySet Name="Reservering" EntityType="Self.Reservering" Schema="Vluchtboeking" store:Type="Tables" />
+          <EntitySet Name="Reserveringvlucht" EntityType="Self.Reserveringvlucht" Schema="Vluchtboeking" store:Type="Tables" />
+          <EntitySet Name="Vlucht" EntityType="Self.Vlucht" Schema="Vluchtboeking" store:Type="Tables" />
+          <AssociationSet Name="FK_Reservering_Klasse" Association="Self.FK_Reservering_Klasse">
+            <End Role="Klasse" EntitySet="Klasse" />
+            <End Role="Reservering" EntitySet="Reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservering_Passagier" Association="Self.FK_Reservering_Passagier">
+            <End Role="Passagier" EntitySet="Passagier" />
+            <End Role="Reservering" EntitySet="Reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserveringvlucht_Reservering" Association="Self.FK_Reserveringvlucht_Reservering">
+            <End Role="Reservering" EntitySet="Reservering" />
+            <End Role="Reserveringvlucht" EntitySet="Reserveringvlucht" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserveringvlucht_Vlucht" Association="Self.FK_Reserveringvlucht_Vlucht">
+            <End Role="Vlucht" EntitySet="Vlucht" />
+            <End Role="Reserveringvlucht" EntitySet="Reserveringvlucht" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vlucht_Luchthaven_bestemming" Association="Self.FK_Vlucht_Luchthaven_bestemming">
+            <End Role="Luchthaven" EntitySet="Luchthaven" />
+            <End Role="Vlucht" EntitySet="Vlucht" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vlucht_Luchthaven_vertrek" Association="Self.FK_Vlucht_Luchthaven_vertrek">
+            <End Role="Luchthaven" EntitySet="Luchthaven" />
+            <End Role="Vlucht" EntitySet="Vlucht" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VluchtenbeheerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Klasse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="klasseType" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Reserveringen" Relationship="Self.FK_Reservering_Klasse" FromRole="Klasse" ToRole="Reservering" />
+        </EntityType>
+        <EntityType Name="Luchthaven">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="IATA" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stad" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="land" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vluchten" Relationship="Self.FK_Vlucht_Luchthaven_bestemming" FromRole="Luchthaven" ToRole="Vlucht" />
+          <NavigationProperty Name="Vluchten1" Relationship="Self.FK_Vlucht_Luchthaven_vertrek" FromRole="Luchthaven" ToRole="Vlucht" />
+        </EntityType>
+        <EntityType Name="Passagier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="emailadres" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="voornaam" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="achternaam" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefoonnummer" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="geboortedatum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nationaliteit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="plaats" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="straat" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="huisnummer" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reserveringen" Relationship="Self.FK_Reservering_Passagier" FromRole="Passagier" ToRole="Reservering" />
+        </EntityType>
+        <EntityType Name="Reservering">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="boekingscode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="passagierId" Type="Int32" Nullable="false" />
+          <Property Name="klasseId" Type="Int32" Nullable="false" />
+          <Property Name="boekingsdatum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="betaalmethode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="boekingsstatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Klasse" Relationship="Self.FK_Reservering_Klasse" FromRole="Reservering" ToRole="Klasse" />
+          <NavigationProperty Name="Passagier" Relationship="Self.FK_Reservering_Passagier" FromRole="Reservering" ToRole="Passagier" />
+          <NavigationProperty Name="Reserveringvluchten" Relationship="Self.FK_Reserveringvlucht_Reservering" FromRole="Reservering" ToRole="Reserveringvlucht" />
+        </EntityType>
+        <EntityType Name="Reserveringvlucht">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="reserveringId" Type="Int32" Nullable="false" />
+          <Property Name="vluchtId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Reservering" Relationship="Self.FK_Reserveringvlucht_Reservering" FromRole="Reserveringvlucht" ToRole="Reservering" />
+          <NavigationProperty Name="Vlucht" Relationship="Self.FK_Reserveringvlucht_Vlucht" FromRole="Reserveringvlucht" ToRole="Vlucht" />
+        </EntityType>
+        <EntityType Name="Vlucht">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="toestelId" Type="Int32" Nullable="false" />
+          <Property Name="bestemming" Type="Int32" Nullable="false" />
+          <Property Name="vertrek" Type="Int32" Nullable="false" />
+          <Property Name="vertrektijd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="aankomsttijd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="vluchtprijs" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Luchthaven" Relationship="Self.FK_Vlucht_Luchthaven_bestemming" FromRole="Vlucht" ToRole="Luchthaven" />
+          <NavigationProperty Name="Luchthaven1" Relationship="Self.FK_Vlucht_Luchthaven_vertrek" FromRole="Vlucht" ToRole="Luchthaven" />
+          <NavigationProperty Name="Reserveringvluchten" Relationship="Self.FK_Reserveringvlucht_Vlucht" FromRole="Vlucht" ToRole="Reserveringvlucht" />
+        </EntityType>
+        <Association Name="FK_Reservering_Klasse">
+          <End Role="Klasse" Type="Self.Klasse" Multiplicity="1" />
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klasse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservering">
+              <PropertyRef Name="klasseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vlucht_Luchthaven_bestemming">
+          <End Role="Luchthaven" Type="Self.Luchthaven" Multiplicity="1" />
+          <End Role="Vlucht" Type="Self.Vlucht" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Luchthaven">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vlucht">
+              <PropertyRef Name="bestemming" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vlucht_Luchthaven_vertrek">
+          <End Role="Luchthaven" Type="Self.Luchthaven" Multiplicity="1" />
+          <End Role="Vlucht" Type="Self.Vlucht" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Luchthaven">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vlucht">
+              <PropertyRef Name="vertrek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservering_Passagier">
+          <End Role="Passagier" Type="Self.Passagier" Multiplicity="1" />
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passagier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservering">
+              <PropertyRef Name="passagierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserveringvlucht_Reservering">
+          <End Role="Reservering" Type="Self.Reservering" Multiplicity="1" />
+          <End Role="Reserveringvlucht" Type="Self.Reserveringvlucht" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservering">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reserveringvlucht">
+              <PropertyRef Name="reserveringId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserveringvlucht_Vlucht">
+          <End Role="Vlucht" Type="Self.Vlucht" Multiplicity="1" />
+          <End Role="Reserveringvlucht" Type="Self.Reserveringvlucht" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vlucht">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reserveringvlucht">
+              <PropertyRef Name="vluchtId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VluchtenbeheerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Klasse" EntityType="Self.Klasse" />
+          <EntitySet Name="Luchthaven" EntityType="Self.Luchthaven" />
+          <EntitySet Name="Passagier" EntityType="Self.Passagier" />
+          <EntitySet Name="Reservering" EntityType="Self.Reservering" />
+          <EntitySet Name="Reserveringvlucht" EntityType="Self.Reserveringvlucht" />
+          <EntitySet Name="Vlucht" EntityType="Self.Vlucht" />
+          <AssociationSet Name="FK_Reservering_Klasse" Association="Self.FK_Reservering_Klasse">
+            <End Role="Klasse" EntitySet="Klasse" />
+            <End Role="Reservering" EntitySet="Reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vlucht_Luchthaven_bestemming" Association="Self.FK_Vlucht_Luchthaven_bestemming">
+            <End Role="Luchthaven" EntitySet="Luchthaven" />
+            <End Role="Vlucht" EntitySet="Vlucht" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vlucht_Luchthaven_vertrek" Association="Self.FK_Vlucht_Luchthaven_vertrek">
+            <End Role="Luchthaven" EntitySet="Luchthaven" />
+            <End Role="Vlucht" EntitySet="Vlucht" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservering_Passagier" Association="Self.FK_Reservering_Passagier">
+            <End Role="Passagier" EntitySet="Passagier" />
+            <End Role="Reservering" EntitySet="Reservering" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserveringvlucht_Reservering" Association="Self.FK_Reserveringvlucht_Reservering">
+            <End Role="Reservering" EntitySet="Reservering" />
+            <End Role="Reserveringvlucht" EntitySet="Reserveringvlucht" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserveringvlucht_Vlucht" Association="Self.FK_Reserveringvlucht_Vlucht">
+            <End Role="Vlucht" EntitySet="Vlucht" />
+            <End Role="Reserveringvlucht" EntitySet="Reserveringvlucht" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VluchtenbeheerModelStoreContainer" CdmEntityContainer="VluchtenbeheerEntities">
+          <EntitySetMapping Name="Klasse">
+            <EntityTypeMapping TypeName="VluchtenbeheerModel.Klasse">
+              <MappingFragment StoreEntitySet="Klasse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="klasseType" ColumnName="klasseType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Luchthaven">
+            <EntityTypeMapping TypeName="VluchtenbeheerModel.Luchthaven">
+              <MappingFragment StoreEntitySet="Luchthaven">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IATA" ColumnName="IATA" />
+                <ScalarProperty Name="stad" ColumnName="stad" />
+                <ScalarProperty Name="land" ColumnName="land" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passagier">
+            <EntityTypeMapping TypeName="VluchtenbeheerModel.Passagier">
+              <MappingFragment StoreEntitySet="Passagier">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="emailadres" ColumnName="emailadres" />
+                <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+                <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+                <ScalarProperty Name="telefoonnummer" ColumnName="telefoonnummer" />
+                <ScalarProperty Name="geboortedatum" ColumnName="geboortedatum" />
+                <ScalarProperty Name="nationaliteit" ColumnName="nationaliteit" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="plaats" ColumnName="plaats" />
+                <ScalarProperty Name="straat" ColumnName="straat" />
+                <ScalarProperty Name="huisnummer" ColumnName="huisnummer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservering">
+            <EntityTypeMapping TypeName="VluchtenbeheerModel.Reservering">
+              <MappingFragment StoreEntitySet="Reservering">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="boekingscode" ColumnName="boekingscode" />
+                <ScalarProperty Name="passagierId" ColumnName="passagierId" />
+                <ScalarProperty Name="klasseId" ColumnName="klasseId" />
+                <ScalarProperty Name="boekingsdatum" ColumnName="boekingsdatum" />
+                <ScalarProperty Name="betaalmethode" ColumnName="betaalmethode" />
+                <ScalarProperty Name="boekingsstatus" ColumnName="boekingsstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserveringvlucht">
+            <EntityTypeMapping TypeName="VluchtenbeheerModel.Reserveringvlucht">
+              <MappingFragment StoreEntitySet="Reserveringvlucht">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="reserveringId" ColumnName="reserveringId" />
+                <ScalarProperty Name="vluchtId" ColumnName="vluchtId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vlucht">
+            <EntityTypeMapping TypeName="VluchtenbeheerModel.Vlucht">
+              <MappingFragment StoreEntitySet="Vlucht">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="toestelId" ColumnName="toestelId" />
+                <ScalarProperty Name="bestemming" ColumnName="bestemming" />
+                <ScalarProperty Name="vertrek" ColumnName="vertrek" />
+                <ScalarProperty Name="vertrektijd" ColumnName="vertrektijd" />
+                <ScalarProperty Name="aankomsttijd" ColumnName="aankomsttijd" />
+                <ScalarProperty Name="vluchtprijs" ColumnName="vluchtprijs" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

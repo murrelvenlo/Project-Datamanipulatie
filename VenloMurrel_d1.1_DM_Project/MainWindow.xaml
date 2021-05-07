@@ -13,9 +13,9 @@
         TextOptions.TextRenderingMode="Auto"        
         
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="400" Width="800">
+        Title="MainWindow" Height="400" Width="800" Loaded="Window_Loaded">
 
-    <Window.Background>
+<Window.Background>
         <ImageBrush ImageSource="afbeelding/airplane.jpg"></ImageBrush>
     </Window.Background>
     <Grid>
@@ -40,18 +40,18 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox x:Name="cmbType" Grid.Row="0" Grid.Column="0"
-                          materialDesign:HintAssist.Hint="Reis" IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" Margin="5"/>
-                <TextBox x:Name="txtVertrek"   Margin="5"  Grid.Column="1" 
+                <!--<ComboBox x:Name="cmbType" Grid.Row="0" Grid.Column="0"
+                          materialDesign:HintAssist.Hint="Reis" IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" Margin="5"/>-->
+                <TextBox x:Name="txtVertrek"  Margin="5"
                     materialDesign:HintAssist.Hint="Vertrek vanaf" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <TextBox x:Name="txtAankomst"   Margin="5"  Grid.Column="2"  
+                <TextBox x:Name="txtAankomst"  Margin="5"  Grid.Column="1"  
                     materialDesign:HintAssist.Hint="Aankomst op" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <DatePicker x:Name="dpVlucht" Grid.Row="1" Grid.Column="0" Margin="5"/>
-                <TextBox x:Name="txtAantalPassagiers" Grid.Row="1"  Margin="5"  Grid.Column="1" 
-                    materialDesign:HintAssist.Hint="Aantal Passagiers" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <ComboBox x:Name="cmbKlasse" Grid.Row="1" Grid.Column="2"
-                          materialDesign:HintAssist.Hint="Klasse" IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" Margin="5"/>
-                <Button x:Name="btnZoeken" Content="Vlucht zoeken" Grid.Column="1"  Grid.Row="2" Margin="5" />
+                <DatePicker x:Name="dpVlucht" Grid.Row="0" Grid.Column="2" Margin="5"/>
+                <!--<TextBox x:Name="txtAantalPassagiers" Grid.Row="1"  Margin="5"  Grid.Column="1" 
+                    materialDesign:HintAssist.Hint="Aantal Passagiers" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>-->
+                <!--<ComboBox x:Name="cmbKlasse" Grid.Row="1" Grid.Column="2"
+                          materialDesign:HintAssist.Hint="Klasse" IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" Margin="5"/>-->
+                <Button x:Name="btnZoeken" Content="Vlucht zoeken" Grid.Column="1"  Grid.Row="2" Margin="5" Click="btnZoeken_Click" />
             </Grid>
         </GroupBox>
         <GroupBox Header="Vluchten" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
@@ -62,8 +62,16 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <DataGrid x:Name="dataWinkels" AutoGenerateColumns="True" Margin="10" >
-
+                <DataGrid x:Name="datagridVluchten" AutoGenerateColumns="False" Margin="5" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding id}" Header="Vluchtnummer"/>
+                        <DataGridTextColumn Binding="{Binding datum}" Header="Datum"/>
+                        <DataGridTextColumn Binding="{Binding Luchthaven1.stad}" Header="Vertrek"/>
+                        <DataGridTextColumn Binding="{Binding vertrektijd}" Header="Vertektijd"/>
+                        <DataGridTextColumn Binding="{Binding Luchthaven.stad}" Header="Bestemming"/>
+                        <DataGridTextColumn Binding="{Binding aankomsttijd}" Header="Aankomsttijd"/>
+                        <DataGridTextColumn Binding="{Binding vluchtprijs}" Header="Vluchtprijs"/>
+                    </DataGrid.Columns>
                 </DataGrid>
 
             </Grid>
