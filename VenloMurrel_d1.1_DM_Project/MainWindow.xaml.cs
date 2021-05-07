@@ -28,14 +28,18 @@ namespace VenloMurrel_d1._1_DM_Project
 
         private void btnZoeken_Click(object sender, RoutedEventArgs e)
         {
-            datagridVluchten.ItemsSource = DatabaseOperations.VluchtenZoeken(txtVertrek.Text, txtAankomst.Text);
-
-            
+            datagridVluchten.ItemsSource = DatabaseOperations.VluchtenZoeken();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //cmbKlasse.ItemsSource = DatabaseOperations.OphalenKlasse();
+
+        }
+
+        private void btnGewensteVlucht_Click(object sender, RoutedEventArgs e)
+        {
+            datagridVluchten.ItemsSource = DatabaseOperations.GewensteVluchtenZoeken(txtVertrek.Text, txtAankomst.Text);
         }
     }
 }

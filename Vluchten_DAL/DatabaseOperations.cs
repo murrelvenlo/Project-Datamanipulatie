@@ -9,7 +9,19 @@ namespace Vluchten_DAL
 {
     public static class DatabaseOperations
     {
-        public static List<Vlucht> VluchtenZoeken(string heen, string aankomst)
+        public static List<Vlucht> VluchtenZoeken()
+        {
+            using (VluchtenbeheerEntities flightsEntities = new VluchtenbeheerEntities())
+            {
+                return flightsEntities.Vlucht
+                    .Include(x => x.Luchthaven)
+                    .Include(x => x.Luchthaven1)
+                    .ToList();
+            }
+        }
+
+        //Filter op basis van Luchthaven
+        public static List<Vlucht> GewensteVluchtenZoeken(string heen, string aankomst)
         {
             using (VluchtenbeheerEntities flightsEntities = new VluchtenbeheerEntities())
             {
