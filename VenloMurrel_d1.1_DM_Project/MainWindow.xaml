@@ -63,7 +63,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <DataGrid x:Name="datagridVluchten" AutoGenerateColumns="False" Margin="5" SelectionChanged="datagridVluchten_SelectionChanged">
+                <DataGrid x:Name="datagridVluchten" AutoGenerateColumns="False" Margin="5" SelectionChanged="datagridVluchten_SelectionChanged" LoadingRowDetails="datagridVluchten_LoadingRowDetails">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding id}" Header="Vluchtnummer" />
                         <DataGridTextColumn Binding="{Binding datum}" Header="Datum"/>

@@ -43,12 +43,47 @@ namespace VenloMurrel_d1._1_DM_Project
         }
 
         private void datagridVluchten_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (datagridVluchten.SelectedItem is Vlucht vlucht)
+        {//Moet verder gedaan worden   
+            
+            VluchtBoeken vluchtBoeken = new VluchtBoeken();
+            vluchtBoeken.Show();
+            List<Vlucht> vluchten = DatabaseOperations.VluchtenZoeken();
+            if (datagridVluchten.SelectedItem is Vlucht vluchtje)
             {
-                VluchtBoeken vluchtBoeken = new VluchtBoeken();
-                vluchtBoeken.Show();
+
+                //Heen vlucht
+                vluchtBoeken.txtInfoVLucht.Text = (vluchtje.vertrektijd   + " ------------- " + vluchtje.aankomsttijd).PadRight(3) + "\n"  + (vluchtje.Luchthaven1.land + " ------------- " + vluchtje.Luchthaven.land).PadLeft(3);
+                vluchtBoeken.txtHeenVlucht.Text = "Vertrek: " + vluchtje.vertrektijd + " " + vluchtje.Luchthaven1.IATA + " " + vluchtje.Luchthaven1.stad;
+                vluchtBoeken.txtEindBestemming.Text = "Aankomst: " + vluchtje.aankomsttijd + " " + vluchtje.Luchthaven.IATA + " " + vluchtje.Luchthaven.stad;
+                vluchtBoeken.txtDatum.Text = "Datum: " + vluchtje.datum.ToString();
+                vluchtBoeken.txtReisduur.Text = "Reisduur: " + (vluchtje.aankomsttijd - vluchtje.vertrektijd).ToString();
+
+                /*Terug
+                vluchtBoeken.txtInfoVLucht2.Text = (vluchtje.vertrektijd + " ------------- " + vluchtje.aankomsttijd).PadRight(3) + "\n" + (vluchtje.Luchthaven.land + " ------------- " + vluchtje.Luchthaven1.land).PadLeft(3);
+                vluchtBoeken.txtHeenVlucht2.Text = "Vertrek: " + vluchtje.vertrektijd + " " + vluchtje.Luchthaven.IATA + " " + vluchtje.Luchthaven.stad;
+                vluchtBoeken.txtEindBestemming2.Text = "Aankomst: " + vluchtje.aankomsttijd + " " + vluchtje.Luchthaven1.IATA + " " + vluchtje.Luchthaven1.stad;
+                vluchtBoeken.txtDatum2.Text = "Datum: " + vluchtje.datum.ToString();
+                vluchtBoeken.txtReisduur2.Text = "Reisduur: " + (vluchtje.aankomsttijd - vluchtje.vertrektijd).ToString();
+                */
+
             }
         }
+
+        private void datagridVluchten_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
+        {
+
+        }
+
+        /*private void VlGegevensBekijken_Click(object sender, MouseButtonEventArgs e)
+        {
+            VluchtBoeken vluchtBoeken = new VluchtBoeken();
+            vluchtBoeken.Show();
+        }
+
+        private void datagridVluchten_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
+        {
+            VluchtBoeken vluchtBoeken = new VluchtBoeken();
+            vluchtBoeken.Show();
+        }*/
     }
 }

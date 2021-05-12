@@ -42,5 +42,19 @@ namespace Vluchten_DAL
                     .ToList();
             }
         }
+
+       // public static List<Luchthaven> VluchtInformatie()
+        //{
+           // using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
+            //{
+               // return vluchtenbeheerEntities.Vlucht
+                   // .Include(x => x.Luchthaven1)
+                    //.Include(x => x.Luchthaven)
+
+                    //.ToList();
+            //}
+       // }
+
+        
     }
 }

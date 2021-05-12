@@ -10,11 +10,57 @@
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
+        TextOptions.TextRenderingMode="Auto" 
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="VluchtBoeken" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="VluchtBoeken" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Background>
+        <ImageBrush ImageSource="afbeelding/flight.jpg"></ImageBrush>
+    </Window.Background>
+    <!--<StackPanel>
+        <DockPanel>-->
+            <GroupBox Header="Vlucht Informatie">
+                <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition/>
+                <ColumnDefinition  Width="350"/>
+        </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="txtInfoVLucht" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="5" Background="White"/>
+                    <TextBox x:Name="txtHeenVlucht" Grid.Row="1" Grid.Column="0" Margin="5" Background="White"/>
+                    <TextBox x:Name="txtEindBestemming" Grid.Row="1" Grid.Column="3" Margin="5" Background="White"/>
+                    <TextBox x:Name="txtDatum" Grid.Row="3" Grid.Column="0" Margin="5" Background="White" Width="150"/>
+            <TextBox x:Name="txtReisduur" Grid.Row="3" Grid.Column="2" Margin="5" Background="White" Width="150"/>
+                </Grid>
+            </GroupBox>
+            <!--<GroupBox DockPanel.Dock="Right" Header="Terug">
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition  Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="txtInfoVLucht2" Grid.Row="0" Grid.Column="1" Margin="5" Background="Gray"/>
+                <TextBox x:Name="txtHeenVlucht2" Grid.Row="1" Grid.ColumnSpan="2" Margin="5"/>
+                <TextBox x:Name="txtEindBestemming2" Grid.Row="2" Grid.ColumnSpan="2" Margin="5"/>
+                <TextBox x:Name="txtDatum2" Grid.Row="3" Grid.Column="0" Margin="5"/>
+                <TextBox x:Name="txtReisduur2" Grid.Row="3" Grid.Column="2" Margin="5"/>
+                </Grid>
+            </GroupBox>-->
+        <!--</DockPanel>
+
+    </StackPanel>-->
 </Window>
