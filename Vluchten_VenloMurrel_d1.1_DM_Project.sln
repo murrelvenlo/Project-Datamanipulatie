@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VenloMurrel_d1.1_DM_Project
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vluchten_DAL", "Vluchten_DAL\Vluchten_DAL.csproj", "{BEF79199-AE29-4777-8EC6-6E40A016EEA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vluchten_Models", "Vluchten_Models\Vluchten_Models.csproj", "{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BEF79199-AE29-4777-8EC6-6E40A016EEA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEF79199-AE29-4777-8EC6-6E40A016EEA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEF79199-AE29-4777-8EC6-6E40A016EEA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

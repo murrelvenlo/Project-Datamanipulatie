@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vluchten_DAL;
 
 namespace VenloMurrel_d1._1_DM_Project
 {
@@ -23,5 +24,90 @@ namespace VenloMurrel_d1._1_DM_Project
         {
             InitializeComponent();
         }
+
+        
+        
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+           //List<Passagier> passagiers = DatabaseOperations.PassagierOphalen();
+
+            
+        }
+
+        private void txtRegistreer_Click(object sender, RoutedEventArgs e)
+        {
+           string foutmeldingen = Valideer("Passagier");
+
+            foutmeldingen += Valideer("id");
+            foutmeldingen += Valideer("geboortedatum");
+
+            //foutmeldingen += Valideer();
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                Passagier passagier = new Passagier();
+                passagier.achternaam = txtNaam.Text;
+                passagier.voornaam = txtVoornaam.Text;
+                passagier.emailadres = txtEmail.Text;
+                passagier.nationaliteit = txtNationaliteit.Text;
+                passagier.geboortedatum = DateTime.Parse(txtGeboorte.Text);
+                passagier.plaats = txtPlaats.Text;
+                passagier.id = int.Parse(txtpNummer.Text);
+                passagier.telefoonnummer = txtTelefoonnummer.Text;
+
+                if (passagier.IsGeldig())
+                {
+                    int gelukt = DatabaseOperations.PassagierToevoegen(passagier);
+
+                    if (gelukt > 0)
+                    {
+                        VluchtBoeken vluchtBoeken = new VluchtBoeken();
+                        vluchtBoeken.Show();
+                        vluchtBoeken.DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Passagier is niet toegevoeg!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(passagier.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen);
+            }
+            
+        }
+
+      
+       
+
+        private void BtnAnnuleren_Click(object sender, RoutedEventArgs e)
+        {
+            txtNaam.Text = "";
+            txtVoornaam.Text = "";
+            txtEmail.Text = "";
+            txtNationaliteit.Text = "";
+            txtGeboorte.Text = "";
+            txtPlaats.Text = "";
+            txtpNummer.Text = "";
+            txtTelefoonnummer.Text = "";
+        }
+
+        private string Valideer(string columnName)
+        {
+            if (columnName == "id" && !int.TryParse(txtpNummer.Text, out int id))
+            {
+                return "Passagiersnummer moet positief zijn!" + Environment.NewLine;
+            }
+            if (columnName == "geboortedatum" && !DateTime.TryParse(txtGeboorte.Text, out DateTime geboortedatum))
+            {
+                return "Geboortedatum moet in dateformat zijn!" + Environment.NewLine;
+            }
+            return "";
+        }
     }
 }
+

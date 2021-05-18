@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseOperations.cs" />
+    <Compile Include="FileOperations.cs" />
     <Compile Include="Klasse.cs">
       <DependentUpon>VluchtenbeheerModel.tt</DependentUpon>
     </Compile>
@@ -62,6 +63,10 @@
     </Compile>
     <Compile Include="Partials\Klasse.cs" />
     <Compile Include="Partials\Luchthaven.cs" />
+    <Compile Include="Partials\Passagier.cs" />
+    <Compile Include="Partials\Reservering.cs" />
+    <Compile Include="Partials\Reserveringvlucht.cs" />
+    <Compile Include="Partials\Vlucht.cs" />
     <Compile Include="Passagier.cs">
       <DependentUpon>VluchtenbeheerModel.tt</DependentUpon>
     </Compile>
@@ -118,6 +123,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vluchten_Models\Vluchten_Models.csproj">
+      <Project>{72e2cfd4-19e0-4c17-891f-93bc1bd869ff}</Project>
+      <Name>Vluchten_Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

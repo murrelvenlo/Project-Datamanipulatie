@@ -13,41 +13,48 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="DeepSkyBlue"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="PassagierWindow" Height="450" Width="300">
+        Title="PassagierWindow" Height="550" Width="300" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <!--<Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-        </Grid.ColumnDefinitions>-->
+        </Grid.ColumnDefinitions>
 
         <TextBlock HorizontalAlignment="Center" Margin="10" Grid.Row="0"
     Style="{StaticResource MaterialDesignHeadline6TextBlock}">
   Passagier
         </TextBlock>
-        <TextBox x:Name="txtVoornaam"   Margin="5" Grid.Row="1" HorizontalAlignment="Center"
+        <TextBox x:Name="txtpNummer"   Margin="10" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Passagiersnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox x:Name="txtVoornaam"   Margin="5" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Voornaam" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtNaam"   Margin="5" Grid.Row="2" HorizontalAlignment="Center"
+        <TextBox x:Name="txtNaam"   Margin="5" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Naam" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtEmail"   Margin="5" Grid.Row="3" HorizontalAlignment="Center"
+        <TextBox x:Name="txtEmail"   Margin="5" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="E-mailadres" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtGeboorte"   Margin="5" Grid.Row="4" HorizontalAlignment="Center"
+        <TextBox x:Name="txtGeboorte"   Margin="5" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Geboortedatum" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtNationaliteit"   Margin="5" Grid.Row="5" HorizontalAlignment="Center"
+        <TextBox x:Name="txtNationaliteit"   Margin="5" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Nationaliteit" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtAdres"   Margin="5" Grid.Row="6" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Adres" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <Button x:Name="txtVerder" Content="Verder" HorizontalAlignment="Right" Margin="5" Grid.Row="7"/>
-
+        <TextBox x:Name="txtPlaats"   Margin="5" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Plaats" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox x:Name="txtTelefoonnummer"   Margin="5" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Telefoonnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <Button x:Name="btnRegistreer" Content="Registreer" Margin="5" Grid.Column="0" Grid.Row="9" Click="txtRegistreer_Click"/>
+        <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="5" Click="BtnAnnuleren_Click" Grid.Column="1" Grid.Row="9"/>
 
     </Grid>
 </Window>
