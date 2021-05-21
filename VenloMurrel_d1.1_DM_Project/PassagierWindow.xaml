@@ -33,7 +33,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock HorizontalAlignment="Center" Margin="10" Grid.Row="0"
+        <TextBlock HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="2" Grid.Row="0"
     Style="{StaticResource MaterialDesignHeadline6TextBlock}">
   Passagier
         </TextBlock>
@@ -53,8 +53,11 @@
                     materialDesign:HintAssist.Hint="Plaats" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
         <TextBox x:Name="txtTelefoonnummer"   Margin="5" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Telefoonnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <Button x:Name="btnRegistreer" Content="Registreer" Margin="5" Grid.Column="0" Grid.Row="9" Click="txtRegistreer_Click"/>
+        <!--<Button x:Name="btnRegistreer" Content="Registreer" Margin="5" Grid.Column="0" Grid.Row="9" Click="txtRegistreer_Click"/>-->
+        <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="5" Grid.Column="0" Grid.Row="9" Click="BtnToevoegen_Click"/>
         <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="5" Click="BtnAnnuleren_Click" Grid.Column="1" Grid.Row="9"/>
+        <!--<Button x:Name="btnBijwerken" Content="Bijwerkenn" Margin="5" Click="BtnBijwerken_Click" Grid.Column="1" Grid.Row="10"/>-->
+        <Button x:Name="btnSluiten" Content="Sluiten" Margin="5" Click="BtnSluiten_Click" Grid.ColumnSpan="2" Grid.Row="10"/>
 
     </Grid>
 </Window>

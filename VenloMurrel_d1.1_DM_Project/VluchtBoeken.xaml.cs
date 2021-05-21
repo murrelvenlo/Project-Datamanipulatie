@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Vluchten_DAL;
+using Vluchten_Models;
 
 namespace VenloMurrel_d1._1_DM_Project
 {
@@ -31,22 +32,23 @@ namespace VenloMurrel_d1._1_DM_Project
             List<Passagier> passagiers = DatabaseOperations.PassagiersOphalen();
             foreach (var passagier in passagiers)
             {
-                //lblVluchtInformatie.Content += "De passagier, " + passagier.voornaam + " " + passagier.achternaam + Environment.NewLine;
+                
                 foreach (var reservering in passagier.Reserveringen)
                 {
-
-                    //lblVluchtInformatie.Content += "met boekingsreferentie: " + reservering.boekingscode + Environment.NewLine;
-
                     foreach (var reserveringvlucht in reservering.Reserveringvluchten)
                     {
 
                         lblVluchtInformatie.Content += "De passagier, " + passagier.voornaam + " " + passagier.achternaam + " met boekingsreferentie: " + reservering.boekingscode + " met het vluchtnummer: " + reserveringvlucht.vluchtId + " van " + reserveringvlucht.Vlucht.Luchthaven1 + " naar " + reserveringvlucht.Vlucht.Luchthaven + Environment.NewLine;
-                        //lblVluchtInformatie.Content += "met vluchtnummer: " + reserveringvlucht.vluchtId + " van " + reserveringvlucht.Vlucht.Luchthaven1 + " naar " + reserveringvlucht.Vlucht.Luchthaven + Environment.NewLine;
+                        
                     }
                 }
             }
-            //cmbVluchtnummer.DisplayMemberPath = "Luchthaven";
-            //cmbVluchtnummer.ItemsSource = DatabaseOperations.LijstVluchtnummers();
+            lblBevestiging.Visibility = Visibility.Hidden;
+            btnVerwijderenBevestigen.Visibility = Visibility.Hidden;
+            btnVerwijderenAnnuleren.Visibility = Visibility.Hidden;
+            btnPassagierBijwerken.Visibility = Visibility.Hidden;
+            btnPassagierVerwijderen.Visibility = Visibility.Hidden;
+            btnUpdateAnnuleren.Visibility = Visibility.Hidden;
         }
 
         private void BtnVerderGaan(object sender, RoutedEventArgs e)
@@ -55,146 +57,78 @@ namespace VenloMurrel_d1._1_DM_Project
             pgs.Show();
         }
 
-        private void BtnGeboekteVluchten_Click(object sender, RoutedEventArgs e)
-        {
-            //datagridReserveringen.ItemsSource = DatabaseOperations.AlleVluchten();
-        }
-
-        //private string Valideer(string columName)
+        //private void BtnGeboekteVluchten_Click(object sender, RoutedEventArgs e)
         //{
-        //    if (columName == "vluchtId" && cmbVluchtnummer.SelectedItem == null)
-        //    {
-        //        return "Selecteer eerst een vluchtnummer!" + Environment.NewLine;
-        //    }
-        //    if (columName == "Reserveringvlucht" && datagridReserveringen.SelectedItem == null)
-        //    {
-        //        return "Selecteer eerst een reserveringvlucht!" + Environment.NewLine;
-        //    }
-        //    if (columName == "txtReserveringId" && !int.TryParse(txtReserveringId.Text, out int reserveringId))
-        //    {
-        //        return "Geef eerst een boekingsreferentie in!" + Environment.NewLine;
-        //    }
-        //    return "";
+        //    //datagridReserveringen.ItemsSource = DatabaseOperations.AlleVluchten();
         //}
 
-        /*private void BtnRToevoegen_Click(object sender, RoutedEventArgs e)
-        {
-            //Valideren
-            string foutmeldingen = Valideer("vluchtId");
-            foutmeldingen += Valideer("reserveringId");
-
-            if (string.IsNullOrWhiteSpace(foutmeldingen))
-            {
-                //Reserveringvlucht aanmaken
-                Vlucht vlucht = cmbVluchtnummer.SelectedItem as Vlucht;
-
-                Reserveringvlucht reserveringvlucht = new Reserveringvlucht();
-
-                reserveringvlucht.reserveringId = int.Parse(txtReserveringId.Text);
-                reserveringvlucht.vluchtId = vlucht.id;
-
-                //Probeer iet met luchthaven hier
-
-                if (reserveringvlucht.IsGeldig())
-                {
-                    int gelukt = DatabaseOperations.ToevoegenReservatie(reserveringvlucht);
-
-                    if (gelukt > 0)
-                    {
-                        datagridReserveringen.ItemsSource = DatabaseOperations.ReserveringIdOphalen(reserveringvlucht.reserveringId);
-                        //Misschien Resetten();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Reserveringvlucht is niet ingegeven!");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(reserveringvlucht.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show(foutmeldingen);
-            }
-        }*/
-
-        private void BtnTry_Click(object sender, RoutedEventArgs e)
-        {
-            Inloggen inloggen = new Inloggen();
-            inloggen.Show();
-        }
-
-        private void btnGa_Click(object sender, RoutedEventArgs e)
-        {
-            ReservatieWindow reservatieWindow = new ReservatieWindow();
-            reservatieWindow.Show();
-        }
+       
 
         private void BtnToonPassagier_Click(object sender, RoutedEventArgs e)
         {
             DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
+            btnPassagierBijwerken.Visibility = Visibility.Visible;
+            btnPassagierVerwijderen.Visibility = Visibility.Visible;
+            
+
         }
 
         private void DataPassagiers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            PassagierWindow passagierWindow = new PassagierWindow();
-            passagierWindow.Show();
 
             if (DataPassagiers.SelectedItem is Passagier passagier)
             {
-                passagierWindow.txtNaam.Text = passagier.achternaam;
-                passagierWindow.txtVoornaam.Text = passagier.voornaam;
-                passagierWindow.txtEmail.Text = passagier.emailadres;
-                passagierWindow.txtNationaliteit.Text = passagier.nationaliteit;
-                passagierWindow.txtGeboorte.Text = passagier.geboortedatum.ToString();
-                passagierWindow.txtPlaats.Text = passagier.plaats;
-                passagierWindow.txtpNummer.Text = passagier.id.ToString();
-                passagierWindow.txtTelefoonnummer.Text = passagier.telefoonnummer;
-                passagierWindow.txtpNummer.IsEnabled = false;
+                txtFamilienaam.Text = passagier.achternaam;
+                txtVoornaam.Text = passagier.voornaam;
+                txtMail.Text = passagier.emailadres;
+                txtNationaliteit.Text = passagier.nationaliteit;
+                txtGeboorte.Text = passagier.geboortedatum.ToLongDateString();
+                txtPlaats.Text = passagier.plaats;
+                txtTelefoonnummer.Text = passagier.telefoonnummer;
             }
 
         }
 
         private void BtnPassagierVerwijderen_Click(object sender, RoutedEventArgs e)
         {
+            Passagier passagier = DataPassagiers.SelectedItem as Passagier;
             
             string foutmeldingen = Valideer("Passagier");
 
             if (string.IsNullOrWhiteSpace(foutmeldingen))
             {
-                Passagier passagier = DataPassagiers.SelectedItem as Passagier;
-                string achternaam = passagier.achternaam;
-
-                int gelukt = DatabaseOperations.PassagierVerwijderen(passagier);
-                if (gelukt > 0)
-                {
-                    DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
-                }
-                else
-                {
-                    MessageBox.Show("Passagier is niet verwijderd!");
-                }
+                lblBevestiging.Visibility = Visibility.Visible;
+                lblBevestiging.Content = $"Weet u zeker dat u  {passagier.voornaam} {passagier.achternaam} wilt verwijderen?";
+                btnVerwijderenBevestigen.Visibility = Visibility.Visible;
+                btnVerwijderenAnnuleren.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen);
             }
         }
 
         private void BtnPassagierBijwerken_Click(object sender, RoutedEventArgs e)
         {
-            string foutmeldingen = Valideer("Passagier");
-
-            foutmeldingen += Valideer("geboortedatum");
-
             
+
+
+            string foutmeldingen = Valideer("Passagier");
 
             if (string.IsNullOrWhiteSpace(foutmeldingen))
             {
                 Passagier passagier = DataPassagiers.SelectedItem as Passagier;
 
-                PassagierWindow passagierWindow = new PassagierWindow();
-                passagierWindow.Show();
+                
 
-                passagierWindow.txtGeboorte.Text = passagier.geboortedatum.ToString();
+                passagier.achternaam = txtFamilienaam.Text;
+                passagier.voornaam = txtVoornaam.Text;
+                passagier.emailadres = txtMail.Text;
+                passagier.nationaliteit = txtNationaliteit.Text;
+                txtGeboorte.Text = passagier.geboortedatum.ToLongDateString() ;
+                passagier.plaats = txtPlaats.Text;
+                passagier.telefoonnummer = txtTelefoonnummer.Text;
+                
 
                 if (passagier.IsGeldig())
                 {
@@ -203,10 +137,12 @@ namespace VenloMurrel_d1._1_DM_Project
                     if (gelukt > 0)
                     {
                         DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
+                        lblBevestiging.Visibility = Visibility.Hidden;
+                        btnUpdateAnnuleren.Visibility = Visibility.Visible;
                     }
                     else
                     {
-                        MessageBox.Show("Passagier is niet aangepast");
+                        MessageBox.Show("Passagier is niet aangepast!");
                     }
                 }
                 else
@@ -219,18 +155,74 @@ namespace VenloMurrel_d1._1_DM_Project
             {
                 MessageBox.Show(foutmeldingen);
             }
-            
-
 
         }
 
         private string Valideer(string columnName)
         {
-            if (columnName == "Passagier" && DataPassagiers.SelectedItem == null)
+            if (columnName == "Passagier" && DataPassagiers.SelectedIndex == -1)
             {
                 return "Selecteer eerst een passagier" + Environment.NewLine;
             }
             return "";
+        }
+
+        private void BtnPassagierToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+            PassagierWindow passagierWindow = new PassagierWindow();
+            passagierWindow.Show();
+        }
+
+        
+
+        private void BtnVerwijderenAnnuleren_Click(object sender, RoutedEventArgs e)
+        {
+            lblBevestiging.Visibility = Visibility.Hidden;
+            DataPassagiers.SelectedItem = false;
+        }
+
+        private void BtnVerwijderenBevestigen_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmeldingen = Valideer("Passagier");
+
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                Passagier passagier = DataPassagiers.SelectedItem as Passagier;
+
+
+                int gelukt = DatabaseOperations.PassagierVerwijderen(passagier);
+                if (gelukt > 0)
+                {
+                    DataPassagiers.ItemsSource = DatabaseOperations.PassagierMetIdOphalen(passagier.id);
+                    lblBevestiging.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    MessageBox.Show("Passagier is niet verwijderd!");
+                }
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen);
+            }
+        }
+
+        private void BtnUpdateAnnuleren_Click(object sender, RoutedEventArgs e)
+        {
+            txtFamilienaam.Text = "";
+            txtVoornaam.Text = "";
+            txtMail.Text = "";
+            txtNationaliteit.Text = "";
+            txtGeboorte.Text = "";
+            txtPlaats.Text = "";
+            txtTelefoonnummer.Text = "";
+            DataPassagiers.SelectedItem = null;
+            btnUpdateAnnuleren.Visibility = Visibility.Hidden;
+        }
+
+        private void BtnSchermAfsluiten_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

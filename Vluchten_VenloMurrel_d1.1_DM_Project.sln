@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vluchten_DAL", "Vluchten_DA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vluchten_Models", "Vluchten_Models\Vluchten_Models.csproj", "{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vluchten_UnitTests", "Vluchten_UnitTests\Vluchten_UnitTests.csproj", "{82EF5ABA-C048-4559-B893-0FD7A542E5FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72E2CFD4-19E0-4C17-891F-93BC1BD869FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82EF5ABA-C048-4559-B893-0FD7A542E5FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82EF5ABA-C048-4559-B893-0FD7A542E5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82EF5ABA-C048-4559-B893-0FD7A542E5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82EF5ABA-C048-4559-B893-0FD7A542E5FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

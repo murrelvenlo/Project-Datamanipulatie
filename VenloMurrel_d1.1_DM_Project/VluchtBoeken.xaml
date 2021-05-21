@@ -12,7 +12,7 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto" 
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="VluchtBoeken" Height="650" Width="1100" Loaded="Window_Loaded">
+        Title="VluchtBoeken" Height="770" Width="1100" Loaded="Window_Loaded">
     <Window.Background>
         <ImageBrush ImageSource="afbeelding/flight.jpg"></ImageBrush>
     </Window.Background>
@@ -29,7 +29,7 @@
                         <Grid>
 
 
-                            <DataGrid x:Name="DataPassagiers"  AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="3" Grid.Row="0" SelectionChanged="DataPassagiers_SelectionChanged">
+                            <DataGrid x:Name="DataPassagiers"  AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="4" Grid.Row="0" SelectionChanged="DataPassagiers_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding id}" Header="Passagiersnummer"/>
                                     <DataGridTextColumn Binding="{Binding voornaam}" Header="Voornaam"/>
@@ -38,34 +38,50 @@
                                     <DataGridTextColumn Binding="{Binding geboortedatum}" Header="Geboortedatum"/>
                                     <DataGridTextColumn Binding="{Binding nationaliteit}" Header="Nationaliteit"/>
                                     <DataGridTextColumn Binding="{Binding plaats}" Header="Plaats"/>
-                                    <DataGridTextColumn Binding="{Binding Reserveringen.boekingscode}" Header="Boekingsreferentie"/>
+                                    <!--<DataGridTextColumn Binding="{Binding Reserveringen.boekingscode}" Header="Boekingsreferentie"/>-->
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
                     </GroupBox>
-                    
-                            <GroupBox DockPanel.Dock="Bottom" >
+
+                    <GroupBox DockPanel.Dock="Bottom" >
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
 
                             <Button x:Name="btnToonPassagier" Content="Toon passagiers" Click="BtnToonPassagier_Click" Grid.Column="0" Grid.Row="0" Margin="5"/>
                             <Button x:Name="btnPassagierVerwijderen" Content="Passagier verwijderen" Click="BtnPassagierVerwijderen_Click" Grid.Column="1" Grid.Row="0" Margin="5"/>
-                            <Button x:Name="btnPassagierBijwerken" Content="passagier Updaten" Click="BtnPassagierBijwerken_Click" Grid.Column="2" Grid.Row="0" Margin="5"/>
+                            <Button x:Name="btnPassagierBijwerken" Content="Passagier Updaten" Click="BtnPassagierBijwerken_Click" Grid.Column="2" Grid.Row="0" Margin="5"/>
+                            <Button x:Name="btnPassagierToevoegen" Content="Passagier Toevoegen" Click="BtnPassagierToevoegen_Click" Grid.Column="3" Grid.Row="0" Margin="5"/>
+                            <Label Grid.Row="1" Grid.ColumnSpan="4" x:Name="lblBevestiging" FontFamily="Courier New" Background="White"/>
+                            <Button x:Name="btnVerwijderenBevestigen" Content="Verwijdering bevestigen" Grid.Column="1" Click="BtnVerwijderenBevestigen_Click" Grid.Row="2" Margin="5"/>
+                            <Button x:Name="btnVerwijderenAnnuleren" Content="Verwijdering annuleren" Click="BtnVerwijderenAnnuleren_Click" Grid.Column="2" Grid.Row="2" Margin="5"/>
+                            <TextBox x:Name="txtVoornaam" Grid.Row="3" Grid.Column="0" Margin="5" materialDesign:HintAssist.Hint="Voornaam" Background="White"/>
+                            <TextBox x:Name="txtFamilienaam" Grid.Row="3" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="Achternaam" Background="White"/>
+                            <TextBox x:Name="txtMail" Grid.Row="3" Grid.Column="2" Margin="5" materialDesign:HintAssist.Hint="E-mail" Background="White"/>
+                            <TextBox x:Name="txtNationaliteit" Grid.Row="3" Grid.Column="3" Margin="5" materialDesign:HintAssist.Hint="Nationaliteit" Background="White"/>
+                            <TextBox x:Name="txtGeboorte" Grid.Row="4" Grid.Column="0" Margin="5" materialDesign:HintAssist.Hint="Geboorte datum" Background="White"/>
+                            <TextBox x:Name="txtPlaats" Grid.Row="4" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="Plaats" Background="White"/>
+                            <TextBox x:Name="txtTelefoonnummer" Grid.Row="4" Grid.Column="2" Margin="5" materialDesign:HintAssist.Hint="Telefoon" Background="White"/>
+                            <Button x:Name="btnUpdateAnnuleren" Content="Update Annuleren" Grid.Column="3" Grid.Row="4" Margin="5" Click="BtnUpdateAnnuleren_Click"/>
+                            <Button x:Name="btnSchermAfsluiten" Content="Scherm afsluiten" Grid.ColumnSpan="2" Grid.Column="1"  Grid.Row="5" Margin="5" Click="BtnSchermAfsluiten_Click"/>
                         </Grid>
                     </GroupBox>
-                       
-                    
                 </DockPanel>
             </GroupBox>
-            </DockPanel>
-        </StackPanel>
-
+        </DockPanel>
+    </StackPanel>
 </Window>

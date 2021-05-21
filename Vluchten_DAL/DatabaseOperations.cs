@@ -18,6 +18,7 @@ namespace Vluchten_DAL
                     .Include(x => x.Luchthaven)
                     .Include(x => x.Luchthaven1)
                     .Include(x => x.Reserveringvluchten)
+                    .OrderBy(x => x.datum)
                     .ToList();
             }
         }
@@ -36,7 +37,7 @@ namespace Vluchten_DAL
             }
         }
 
-        public static List<Klasse> OphalenKlasse()
+        /*public static List<Klasse> OphalenKlasse()
         {
             using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
             {
@@ -44,7 +45,7 @@ namespace Vluchten_DAL
                     .OrderBy(x => x.klasseType)
                     .ToList();
             }
-        }
+        }*/
 
        public static List<Passagier> PassagiersOphalen()
         {
@@ -57,7 +58,7 @@ namespace Vluchten_DAL
                     .ToList();
             }
         }
-
+        /*
         public static List<Reserveringvlucht> AlleVluchten()
         {
             using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
@@ -66,7 +67,7 @@ namespace Vluchten_DAL
                     .ToList();
             }
         }
-
+        //Deze kan mss weg
         public static List<Reserveringvlucht> LijstVluchtnummers()
         {
             using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
@@ -77,7 +78,7 @@ namespace Vluchten_DAL
                     .ToList();
             }
         }
-
+        //Deze kan mss weg
         public static List<Reserveringvlucht> ReserveringIdOphalen(int boekingsreferentie)
         {
             using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
@@ -88,7 +89,7 @@ namespace Vluchten_DAL
                     .Where(x => x.reserveringId == boekingsreferentie)
                     .ToList();
             }
-        }
+        }*/
 
         public static List<Reservering> BoekingOphalen()
         {
@@ -125,13 +126,15 @@ namespace Vluchten_DAL
         {
             using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
                 {
-                    return vluchtenbeheerEntities.Passagier
-                        .Include(x => x.Reserveringen)
-                        .ToList();
+                return vluchtenbeheerEntities.Passagier
+                    .Include(x => x.Reserveringen)
+                    .OrderBy(x => x.id)
+                    .ThenBy(x => x.achternaam)
+                    .ToList();
                 }
         }
 
-        public static List<Reservering> PassagierMetNaam(string naam)
+        public static List<Reservering> PassagierMetID(string naam)
         {
             using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
             {
@@ -204,7 +207,17 @@ namespace Vluchten_DAL
             }
         }
 
-        /*public static List<Passagier> PassagierMetIdOphalen(int passagierID)
+        public static List<Passagier> PassagierIdOphalen()
+        {
+            using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
+            {
+                return vluchtenbeheerEntities.Passagier
+                    .OrderBy(x => x.id)
+                    .ToList();
+            }
+        }
+
+        public static List<Passagier> PassagierMetIdOphalen(int passagierID)
         {
             using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
             {
@@ -212,7 +225,7 @@ namespace Vluchten_DAL
                     .Where(x => x.id == passagierID)
                     .ToList();
             }
-        }*/
+        }
 
     }
 }

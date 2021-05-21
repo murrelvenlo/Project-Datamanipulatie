@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="600" Width="1150" Loaded="Window_Loaded">
+        Title="MainWindow" Height="600" Width="1150">
 
 <Window.Background>
         <ImageBrush ImageSource="afbeelding/airplane.jpg"></ImageBrush>
@@ -40,19 +40,14 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <!--<ComboBox x:Name="cmbType" Grid.Row="0" Grid.Column="0"
-                          materialDesign:HintAssist.Hint="Reis" IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" Margin="5"/>-->
+                
                 <TextBox x:Name="txtVertrek"  Margin="5"
                     materialDesign:HintAssist.Hint="Vertrek vanaf" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <TextBox x:Name="txtAankomst"  Margin="5"  Grid.Column="1"  
                     materialDesign:HintAssist.Hint="Aankomst op" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <!--<DatePicker x:Name="dpVlucht" Grid.Row="0" Grid.Column="2" Margin="5"/>-->
-                <!--<TextBox x:Name="txtAantalPassagiers" Grid.Row="1"  Margin="5"  Grid.Column="1" 
-                    materialDesign:HintAssist.Hint="Aantal Passagiers" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>-->
-                <!--<ComboBox x:Name="cmbKlasse" Grid.Row="1" Grid.Column="2"
-                          materialDesign:HintAssist.Hint="Klasse" IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" Margin="5"/>-->
+                
                 <Button x:Name="btnToonPgs" Content="Ga verder voor meer informatie" Grid.Column="0" Grid.Row="1" Margin="5" Click="btnToonPgs_Click"/>
-                <Button x:Name="btnZoeken" Content="Vlucht zoeken" Grid.Column="2"  Grid.Row="0" Margin="5" Click="btnZoeken_Click" />
+                <Button x:Name="btnZoeken" Content="Toon alle vluchten" Grid.Column="2"  Grid.Row="0" Margin="5" Click="btnZoeken_Click" />
                 <Button x:Name="btnGewensteVlucht" Content="Gewenste vlucht" Grid.Column="2"  Grid.Row="1" Margin="5" Click="btnGewensteVlucht_Click" />
                 
             </Grid>
@@ -73,7 +68,7 @@
                         <DataGridTextColumn Binding="{Binding vertrektijd}" Header="Vertektijd"/>
                         <DataGridTextColumn Binding="{Binding Luchthaven.stad}" Header="Bestemming"/>
                         <DataGridTextColumn Binding="{Binding aankomsttijd}" Header="Aankomsttijd"/>
-                        <DataGridTextColumn Binding="{Binding vluchtprijs}" Header="Vluchtprijs"/>
+                        <DataGridTextColumn Binding="{Binding vluchtprijs}" Header="Vluchtprijs (€)"/>
                         <!--<DataGridTextColumn Binding="{Binding Reserveringvluchten.reserveringId}" Header="Boekingsreferentie"/>-->
                     </DataGrid.Columns>
                 </DataGrid>

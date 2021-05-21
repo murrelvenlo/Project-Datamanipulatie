@@ -45,5 +45,12 @@ namespace Vluchten_DAL
                 return "";
             }
         }
+
+        public Passagier(DateTime geboortedatum)
+        {
+            this.geboortedatum = geboortedatum;
+        }
     }
+
+
 }

@@ -34,9 +34,44 @@ namespace VenloMurrel_d1._1_DM_Project
             
         }
 
-        private void txtRegistreer_Click(object sender, RoutedEventArgs e)
+        
+
+        private void BtnAnnuleren_Click(object sender, RoutedEventArgs e)
         {
-           string foutmeldingen = Valideer("Passagier");
+            txtNaam.Text = "";
+            txtVoornaam.Text = "";
+            txtEmail.Text = "";
+            txtNationaliteit.Text = "";
+            txtGeboorte.Text = "";
+            txtPlaats.Text = "";
+            txtpNummer.Text = "";
+            txtTelefoonnummer.Text = "";
+        }
+
+        private string Valideer(string columnName)
+        {
+            if (columnName == "id" && !int.TryParse(txtpNummer.Text, out int id))
+            {
+                return "Passagiersnummer moet positief zijn!" + Environment.NewLine;
+            }
+            if (columnName == "geboortedatum" && !DateTime.TryParse(txtGeboorte.Text, out DateTime geboortedatum))
+            {
+                return "Geboortedatum moet in dateformat zijn!" + Environment.NewLine;
+            }
+            return "";
+        }
+
+        
+
+        private void BtnSluiten_Click(object sender, RoutedEventArgs e)
+        {
+            //Methode om het huidige scherm af te sluiten. In dit geval sluit ik de derde van de 3 schermen.
+            this.Close();
+        }
+
+        private void BtnToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmeldingen = Valideer("Passagier");
 
             foutmeldingen += Valideer("id");
             foutmeldingen += Valideer("geboortedatum");
@@ -78,35 +113,6 @@ namespace VenloMurrel_d1._1_DM_Project
             {
                 MessageBox.Show(foutmeldingen);
             }
-            
-        }
-
-      
-       
-
-        private void BtnAnnuleren_Click(object sender, RoutedEventArgs e)
-        {
-            txtNaam.Text = "";
-            txtVoornaam.Text = "";
-            txtEmail.Text = "";
-            txtNationaliteit.Text = "";
-            txtGeboorte.Text = "";
-            txtPlaats.Text = "";
-            txtpNummer.Text = "";
-            txtTelefoonnummer.Text = "";
-        }
-
-        private string Valideer(string columnName)
-        {
-            if (columnName == "id" && !int.TryParse(txtpNummer.Text, out int id))
-            {
-                return "Passagiersnummer moet positief zijn!" + Environment.NewLine;
-            }
-            if (columnName == "geboortedatum" && !DateTime.TryParse(txtGeboorte.Text, out DateTime geboortedatum))
-            {
-                return "Geboortedatum moet in dateformat zijn!" + Environment.NewLine;
-            }
-            return "";
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vluchten_Models;
 
 namespace Vluchten_DAL
 {
@@ -23,7 +24,11 @@ namespace Vluchten_DAL
         {
             return this.Luchthaven1.stad;
         }
-        
-        
+
+        public Vlucht(decimal vluchtprijs)
+        {
+            this.vluchtprijs = vluchtprijs;
+        }
+
     }
 }

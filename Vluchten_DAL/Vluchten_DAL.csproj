@@ -67,6 +67,7 @@
     <Compile Include="Partials\Reservering.cs" />
     <Compile Include="Partials\Reserveringvlucht.cs" />
     <Compile Include="Partials\Vlucht.cs" />
+    <Compile Include="Partials\VluchtBase.cs" />
     <Compile Include="Passagier.cs">
       <DependentUpon>VluchtenbeheerModel.tt</DependentUpon>
     </Compile>
