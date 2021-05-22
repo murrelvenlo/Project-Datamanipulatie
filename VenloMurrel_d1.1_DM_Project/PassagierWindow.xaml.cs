@@ -38,14 +38,7 @@ namespace VenloMurrel_d1._1_DM_Project
 
         private void BtnAnnuleren_Click(object sender, RoutedEventArgs e)
         {
-            txtNaam.Text = "";
-            txtVoornaam.Text = "";
-            txtEmail.Text = "";
-            txtNationaliteit.Text = "";
-            txtGeboorte.Text = "";
-            txtPlaats.Text = "";
-            txtpNummer.Text = "";
-            txtTelefoonnummer.Text = "";
+            VlakkenLeegMaken();
         }
 
         private string Valideer(string columnName)
@@ -96,8 +89,9 @@ namespace VenloMurrel_d1._1_DM_Project
                     if (gelukt > 0)
                     {
                         VluchtBoeken vluchtBoeken = new VluchtBoeken();
-                        vluchtBoeken.Show();
+                        //vluchtBoeken.Show();
                         vluchtBoeken.DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
+                       VlakkenLeegMaken();
                     }
                     else
                     {
@@ -113,6 +107,18 @@ namespace VenloMurrel_d1._1_DM_Project
             {
                 MessageBox.Show(foutmeldingen);
             }
+        }
+
+        private void VlakkenLeegMaken()
+        {
+            txtNaam.Text = "";
+            txtVoornaam.Text = "";
+            txtEmail.Text = "";
+            txtNationaliteit.Text = "";
+            txtGeboorte.Text = "";
+            txtPlaats.Text = "";
+            txtpNummer.Text = "";
+            txtTelefoonnummer.Text = "";
         }
     }
 }

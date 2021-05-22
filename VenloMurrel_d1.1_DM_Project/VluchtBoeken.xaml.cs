@@ -69,7 +69,7 @@ namespace VenloMurrel_d1._1_DM_Project
             DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
             btnPassagierBijwerken.Visibility = Visibility.Visible;
             btnPassagierVerwijderen.Visibility = Visibility.Visible;
-            
+            schuifbalkActiveren();
 
         }
 
@@ -110,7 +110,7 @@ namespace VenloMurrel_d1._1_DM_Project
 
         private void BtnPassagierBijwerken_Click(object sender, RoutedEventArgs e)
         {
-            
+            btnUpdateAnnuleren.Visibility = Visibility.Visible;
 
 
             string foutmeldingen = Valideer("Passagier");
@@ -138,7 +138,7 @@ namespace VenloMurrel_d1._1_DM_Project
                     {
                         DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
                         lblBevestiging.Visibility = Visibility.Hidden;
-                        btnUpdateAnnuleren.Visibility = Visibility.Visible;
+                        
                     }
                     else
                     {
@@ -179,6 +179,7 @@ namespace VenloMurrel_d1._1_DM_Project
         {
             lblBevestiging.Visibility = Visibility.Hidden;
             DataPassagiers.SelectedItem = false;
+            vlakkenLeegmaken();
         }
 
         private void BtnVerwijderenBevestigen_Click(object sender, RoutedEventArgs e)
@@ -195,6 +196,7 @@ namespace VenloMurrel_d1._1_DM_Project
                 {
                     DataPassagiers.ItemsSource = DatabaseOperations.PassagierMetIdOphalen(passagier.id);
                     lblBevestiging.Visibility = Visibility.Hidden;
+
                 }
                 else
                 {
@@ -209,6 +211,22 @@ namespace VenloMurrel_d1._1_DM_Project
 
         private void BtnUpdateAnnuleren_Click(object sender, RoutedEventArgs e)
         {
+            vlakkenLeegmaken();
+        }
+
+        private void BtnSchermAfsluiten_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void schuifbalkActiveren()
+        {
+            ScrollViewer.SetHorizontalScrollBarVisibility(this.DataPassagiers, ScrollBarVisibility.Visible);
+            ScrollViewer.SetVerticalScrollBarVisibility(this.DataPassagiers, ScrollBarVisibility.Visible);
+        }
+
+        private void vlakkenLeegmaken()
+        {
             txtFamilienaam.Text = "";
             txtVoornaam.Text = "";
             txtMail.Text = "";
@@ -220,9 +238,5 @@ namespace VenloMurrel_d1._1_DM_Project
             btnUpdateAnnuleren.Visibility = Visibility.Hidden;
         }
 
-        private void BtnSchermAfsluiten_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

@@ -37,16 +37,6 @@ namespace Vluchten_DAL
             }
         }
 
-        /*public static List<Klasse> OphalenKlasse()
-        {
-            using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
-            {
-                return vluchtenbeheerEntities.Klasse
-                    .OrderBy(x => x.klasseType)
-                    .ToList();
-            }
-        }*/
-
        public static List<Passagier> PassagiersOphalen()
         {
             using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
@@ -58,38 +48,7 @@ namespace Vluchten_DAL
                     .ToList();
             }
         }
-        /*
-        public static List<Reserveringvlucht> AlleVluchten()
-        {
-            using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
-            {
-                return vluchtenbeheerEntities.Reserveringvlucht
-                    .ToList();
-            }
-        }
-        //Deze kan mss weg
-        public static List<Reserveringvlucht> LijstVluchtnummers()
-        {
-            using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
-            {
-                return vluchtenbeheerEntities.Reserveringvlucht
-                    //.Include(x => x.Vlucht.Luchthaven)
-                    .OrderBy(x => x.Vlucht.vertrek)
-                    .ToList();
-            }
-        }
-        //Deze kan mss weg
-        public static List<Reserveringvlucht> ReserveringIdOphalen(int boekingsreferentie)
-        {
-            using (VluchtenbeheerEntities vluchtenbeheerEntities = new VluchtenbeheerEntities())
-            {
-                return vluchtenbeheerEntities.Reserveringvlucht
-                    .Include(x => x.Vlucht)
-                    .Include(x => x.Reservering)
-                    .Where(x => x.reserveringId == boekingsreferentie)
-                    .ToList();
-            }
-        }*/
+       
 
         public static List<Reservering> BoekingOphalen()
         {

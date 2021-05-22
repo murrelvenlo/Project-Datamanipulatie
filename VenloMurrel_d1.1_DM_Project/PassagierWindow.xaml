@@ -11,15 +11,11 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
-        Background="DeepSkyBlue"
+        Background="#0000FF"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="PassagierWindow" Height="550" Width="300" Loaded="Window_Loaded">
+        Title="PassagierWindow" Height="380" Width="400" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -33,31 +29,29 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="2" Grid.Row="0"
+        <TextBlock HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="2" Grid.Column="0"  Grid.Row="0"
     Style="{StaticResource MaterialDesignHeadline6TextBlock}">
-  Passagier
+  Voeg hier een passagier toe
         </TextBlock>
-        <TextBox x:Name="txtpNummer"   Margin="10" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Passagiersnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtVoornaam"   Margin="5" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Voornaam" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtNaam"   Margin="5" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Naam" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtEmail"   Margin="5" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="E-mailadres" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtGeboorte"   Margin="5" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Geboortedatum" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtNationaliteit"   Margin="5" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Nationaliteit" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtPlaats"   Margin="5" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Plaats" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox x:Name="txtTelefoonnummer"   Margin="5" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Telefoonnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <!--<Button x:Name="btnRegistreer" Content="Registreer" Margin="5" Grid.Column="0" Grid.Row="9" Click="txtRegistreer_Click"/>-->
-        <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="5" Grid.Column="0" Grid.Row="9" Click="BtnToevoegen_Click"/>
-        <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="5" Click="BtnAnnuleren_Click" Grid.Column="1" Grid.Row="9"/>
-        <!--<Button x:Name="btnBijwerken" Content="Bijwerkenn" Margin="5" Click="BtnBijwerken_Click" Grid.Column="1" Grid.Row="10"/>-->
-        <Button x:Name="btnSluiten" Content="Sluiten" Margin="5" Click="BtnSluiten_Click" Grid.ColumnSpan="2" Grid.Row="10"/>
+        <TextBox x:Name="txtpNummer"   Margin="5" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Passagiersnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <TextBox x:Name="txtVoornaam"   Margin="5" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Voornaam" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <TextBox x:Name="txtNaam"   Margin="5" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Achteraam" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <TextBox x:Name="txtEmail"   Margin="5" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="E-mailadres" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <TextBox x:Name="txtGeboorte"   Margin="5" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Geboortedatum" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <TextBox x:Name="txtNationaliteit"   Margin="5" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Nationaliteit" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <TextBox x:Name="txtPlaats"   Margin="5" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Plaats" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <TextBox x:Name="txtTelefoonnummer"   Margin="5" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Telefoonnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="5" Grid.Column="0" Grid.Row="5" Click="BtnToevoegen_Click"/>
+        <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="5" Click="BtnAnnuleren_Click" Grid.Column="1" Grid.Row="5"/>
+        <Button x:Name="btnSluiten" Content="Sluiten" Margin="5" Click="BtnSluiten_Click" Grid.ColumnSpan="2" Grid.Row="6"/>
 
     </Grid>
 </Window>

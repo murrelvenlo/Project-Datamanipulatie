@@ -33,11 +33,11 @@ namespace VenloMurrel_d1._1_DM_Project
 
         private void btnGewensteVlucht_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (!string.IsNullOrWhiteSpace(txtVertrek.Text) && !string.IsNullOrWhiteSpace(txtAankomst.Text))
             {
-                
-                datagridVluchten.ItemsSource = DatabaseOperations.GewensteVluchtenZoeken(txtVertrek.Text, txtAankomst.Text); 
+
+                datagridVluchten.ItemsSource = DatabaseOperations.GewensteVluchtenZoeken(txtVertrek.Text, txtAankomst.Text);
             }
             else if (!string.IsNullOrWhiteSpace(txtAankomst.Text))
             {
@@ -51,7 +51,7 @@ namespace VenloMurrel_d1._1_DM_Project
             {
                 MessageBox.Show("De velden mogen niet leeg zijn!");
             }
-            
+
         }
 
 
@@ -64,4 +64,4 @@ namespace VenloMurrel_d1._1_DM_Project
         }
 
     }
-        }
+}
