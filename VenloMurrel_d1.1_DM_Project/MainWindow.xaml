@@ -63,13 +63,12 @@
                 <DataGrid x:Name="datagridVluchten" AutoGenerateColumns="False" IsReadOnly="True" Margin="5" SelectionChanged="datagridVluchten_SelectionChanged">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding id}" Header="Vluchtnummer" />
-                        <DataGridTextColumn Binding="{Binding datum}" Header="Datum"/>
+                        <DataGridTextColumn Binding="{Binding datum, StringFormat=  dd MMMM yyyy}" Header="Datum"/>
                         <DataGridTextColumn Binding="{Binding Luchthaven1.stad}" Header="Vertrek"/>
-                        <DataGridTextColumn Binding="{Binding vertrektijd}" Header="Vertektijd"/>
+                        <DataGridTextColumn Binding="{Binding vertrektijd, StringFormat= D}" Header="Vertektijd"/>
                         <DataGridTextColumn Binding="{Binding Luchthaven.stad}" Header="Bestemming"/>
-                        <DataGridTextColumn Binding="{Binding aankomsttijd}" Header="Aankomsttijd"/>
+                        <DataGridTextColumn Binding="{Binding aankomsttijd, StringFormat=\{0:dd.MM.yy\}}" Header="Aankomsttijd"/>
                         <DataGridTextColumn Binding="{Binding vluchtprijs}" Header="Vluchtprijs (€)"/>
-                        <!--<DataGridTextColumn Binding="{Binding Reserveringvluchten.reserveringId}" Header="Boekingsreferentie"/>-->
                     </DataGrid.Columns>
                 </DataGrid>
 

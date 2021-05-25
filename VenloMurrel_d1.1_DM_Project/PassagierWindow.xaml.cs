@@ -88,9 +88,7 @@ namespace VenloMurrel_d1._1_DM_Project
 
                     if (gelukt > 0)
                     {
-                        VluchtBoeken vluchtBoeken = new VluchtBoeken();
-                        //vluchtBoeken.Show();
-                        vluchtBoeken.DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
+                        MessageBox.Show("Passagier is toegevoegd!");
                        VlakkenLeegMaken();
                     }
                     else

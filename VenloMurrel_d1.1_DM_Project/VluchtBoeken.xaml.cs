@@ -170,7 +170,8 @@ namespace VenloMurrel_d1._1_DM_Project
         private void BtnPassagierToevoegen_Click(object sender, RoutedEventArgs e)
         {
             PassagierWindow passagierWindow = new PassagierWindow();
-            passagierWindow.Show();
+            passagierWindow.ShowDialog();
+            DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
         }
 
         
@@ -221,8 +222,8 @@ namespace VenloMurrel_d1._1_DM_Project
 
         private void schuifbalkActiveren()
         {
-            ScrollViewer.SetHorizontalScrollBarVisibility(this.DataPassagiers, ScrollBarVisibility.Visible);
-            ScrollViewer.SetVerticalScrollBarVisibility(this.DataPassagiers, ScrollBarVisibility.Visible);
+            //ScrollViewer.SetHorizontalScrollBarVisibility(this.DataPassagiers, ScrollBarVisibility.Visible);
+            //ScrollViewer.SetVerticalScrollBarVisibility(this.DataPassagiers, ScrollBarVisibility.Visible);
         }
 
         private void vlakkenLeegmaken()

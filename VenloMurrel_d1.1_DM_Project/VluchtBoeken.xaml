@@ -13,7 +13,7 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="VluchtBoeken" Height="680" Width="1300" Loaded="Window_Loaded">
+        Title="VluchtBoeken" Height="680" Width="1200" Loaded="Window_Loaded">
 
     <Grid>
         <StackPanel Background="#233C4F" Width="300" HorizontalAlignment="Right">
@@ -34,7 +34,7 @@
                         Height="80"
                         x:Name="btnToonPassagier" Content="Toon passagiers"
                         Click="BtnToonPassagier_Click" FontSize="20"/>
-                <Button x:Name="btnPassagierToevoegen" Grid.Row="1" Height="80" Content="Passagier Toevoegen"
+                <Button x:Name="btnPassagierToevoegen" Grid.Row="1" Height="80" Content="Passagier toevoegen"
                         Click="BtnPassagierToevoegen_Click"
                         Background="#142128"
                         BorderBrush="#233C4F" FontSize="20"/>
@@ -59,18 +59,18 @@
                         BorderBrush="#233C4F" FontSize="20"/>
             </Grid>
         </StackPanel>
-        <StackPanel Width="980" HorizontalAlignment="Left">
+        <StackPanel Width="880" HorizontalAlignment="Left">
             <StackPanel Height="150">
-                <GroupBox Header="Geboekte vluchten" Height="110">
+                <GroupBox Header="Geboekte vluchten"  Height="110">
                     <Grid>
                         <Label x:Name= "lblVluchtInformatie" FontFamily="Courier New" Background="#d3e2ed"/>
                     </Grid>
                 </GroupBox>
 
             </StackPanel>
-            <StackPanel Height="340">
+            <Grid Height="340">
                 <Grid>
-                    <DataGrid x:Name="DataPassagiers" Height="Auto"  AutoGenerateColumns="False" IsReadOnly="True"  SelectionChanged="DataPassagiers_SelectionChanged">
+                    <DataGrid x:Name="DataPassagiers" AutoGenerateColumns="False" IsReadOnly="True"  SelectionChanged="DataPassagiers_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding id}" Header="Passagiersnummer"/>
                             <DataGridTextColumn Binding="{Binding voornaam}" Header="Voornaam"/>
@@ -83,7 +83,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
-            </StackPanel>
+            </Grid>
             <StackPanel Height="120">
                 <Grid Background="#d3e2ed">
                     <Grid.ColumnDefinitions>
