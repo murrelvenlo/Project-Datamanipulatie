@@ -47,7 +47,7 @@ namespace VenloMurrel_d1._1_DM_Project
             {
                 return "Passagiersnummer moet positief zijn!" + Environment.NewLine;
             }
-            if (columnName == "geboortedatum" && !DateTime.TryParse(txtGeboorte.Text, out DateTime geboortedatum))
+            if (columnName == "geboortedatum" && !DateTime.TryParse(dpGeboorte.Text, out DateTime geboortedatum))
             {
                 return "Geboortedatum moet in dateformat zijn!" + Environment.NewLine;
             }
@@ -77,7 +77,7 @@ namespace VenloMurrel_d1._1_DM_Project
                 passagier.voornaam = txtVoornaam.Text;
                 passagier.emailadres = txtEmail.Text;
                 passagier.nationaliteit = txtNationaliteit.Text;
-                passagier.geboortedatum = DateTime.Parse(txtGeboorte.Text);
+                passagier.geboortedatum = DateTime.Parse(dpGeboorte.Text);
                 passagier.plaats = txtPlaats.Text;
                 passagier.id = int.Parse(txtpNummer.Text);
                 passagier.telefoonnummer = txtTelefoonnummer.Text;
@@ -113,7 +113,7 @@ namespace VenloMurrel_d1._1_DM_Project
             txtVoornaam.Text = "";
             txtEmail.Text = "";
             txtNationaliteit.Text = "";
-            txtGeboorte.Text = "";
+            dpGeboorte.Text = "";
             txtPlaats.Text = "";
             txtpNummer.Text = "";
             txtTelefoonnummer.Text = "";

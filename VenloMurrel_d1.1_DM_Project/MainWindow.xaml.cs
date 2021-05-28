@@ -47,6 +47,7 @@ namespace VenloMurrel_d1._1_DM_Project
             {
                 MessageBox.Show("Geef een bestemming in!");
             }
+
             else
             {
                 MessageBox.Show("De velden mogen niet leeg zijn!");

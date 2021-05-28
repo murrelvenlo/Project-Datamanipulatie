@@ -82,7 +82,7 @@ namespace VenloMurrel_d1._1_DM_Project
                 txtVoornaam.Text = passagier.voornaam;
                 txtMail.Text = passagier.emailadres;
                 txtNationaliteit.Text = passagier.nationaliteit;
-                txtGeboorte.Text = passagier.geboortedatum.ToLongDateString();
+                dpGeboorte.Text = passagier.geboortedatum.ToLongDateString();
                 txtPlaats.Text = passagier.plaats;
                 txtTelefoonnummer.Text = passagier.telefoonnummer;
             }
@@ -125,7 +125,7 @@ namespace VenloMurrel_d1._1_DM_Project
                 passagier.voornaam = txtVoornaam.Text;
                 passagier.emailadres = txtMail.Text;
                 passagier.nationaliteit = txtNationaliteit.Text;
-                txtGeboorte.Text = passagier.geboortedatum.ToLongDateString() ;
+                dpGeboorte.Text = passagier.geboortedatum.ToString() ;
                 passagier.plaats = txtPlaats.Text;
                 passagier.telefoonnummer = txtTelefoonnummer.Text;
                 
@@ -138,7 +138,8 @@ namespace VenloMurrel_d1._1_DM_Project
                     {
                         DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
                         lblBevestiging.Visibility = Visibility.Hidden;
-                        
+                        vlakkenLeegmaken();
+
                     }
                     else
                     {
@@ -181,6 +182,8 @@ namespace VenloMurrel_d1._1_DM_Project
             lblBevestiging.Visibility = Visibility.Hidden;
             DataPassagiers.SelectedItem = false;
             vlakkenLeegmaken();
+            btnVerwijderenBevestigen.Visibility = Visibility.Hidden;
+            btnVerwijderenAnnuleren.Visibility = Visibility.Hidden;
         }
 
         private void BtnVerwijderenBevestigen_Click(object sender, RoutedEventArgs e)
@@ -195,9 +198,11 @@ namespace VenloMurrel_d1._1_DM_Project
                 int gelukt = DatabaseOperations.PassagierVerwijderen(passagier);
                 if (gelukt > 0)
                 {
-                    DataPassagiers.ItemsSource = DatabaseOperations.PassagierMetIdOphalen(passagier.id);
+                    DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
+                    vlakkenLeegmaken();
                     lblBevestiging.Visibility = Visibility.Hidden;
-
+                    MessageBox.Show("Passagier is verwijderd!");
+                    
                 }
                 else
                 {
@@ -232,7 +237,7 @@ namespace VenloMurrel_d1._1_DM_Project
             txtVoornaam.Text = "";
             txtMail.Text = "";
             txtNationaliteit.Text = "";
-            txtGeboorte.Text = "";
+            dpGeboorte.Text = "";
             txtPlaats.Text = "";
             txtTelefoonnummer.Text = "";
             DataPassagiers.SelectedItem = null;

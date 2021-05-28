@@ -13,8 +13,12 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="VluchtBoeken" Height="680" Width="1200" Loaded="Window_Loaded">
+        Title="VluchtBoeken" Height="680" Width="1300" Loaded="Window_Loaded">
 
+    <Window.Background>
+        <ImageBrush ImageSource="afbeelding/airplaneInTheSky.jpg"></ImageBrush>
+    </Window.Background>
+    
     <Grid>
         <StackPanel Background="#233C4F" Width="300" HorizontalAlignment="Right">
             <Grid>
@@ -59,15 +63,15 @@
                         BorderBrush="#233C4F" FontSize="20"/>
             </Grid>
         </StackPanel>
-        <StackPanel Width="880" HorizontalAlignment="Left">
-            <StackPanel Height="150">
+        <StackPanel Width="980" HorizontalAlignment="Left">
+            <Grid Height="150">
                 <GroupBox Header="Geboekte vluchten"  Height="110">
                     <Grid>
                         <Label x:Name= "lblVluchtInformatie" FontFamily="Courier New" Background="#d3e2ed"/>
                     </Grid>
                 </GroupBox>
 
-            </StackPanel>
+            </Grid>
             <Grid Height="340">
                 <Grid>
                     <DataGrid x:Name="DataPassagiers" AutoGenerateColumns="False" IsReadOnly="True"  SelectionChanged="DataPassagiers_SelectionChanged">
@@ -76,7 +80,7 @@
                             <DataGridTextColumn Binding="{Binding voornaam}" Header="Voornaam"/>
                             <DataGridTextColumn Binding="{Binding achternaam}" Header="Achternaam"/>
                             <DataGridTextColumn Binding="{Binding emailadres}" Header="E-mailadres"/>
-                            <DataGridTextColumn Binding="{Binding geboortedatum}" Header="Geboortedatum"/>
+                            <DataGridTextColumn Binding="{Binding geboortedatum, StringFormat= dddd d MMMM yyyy}" Header="Geboortedatum"/>
                             <DataGridTextColumn Binding="{Binding nationaliteit}" Header="Nationaliteit"/>
                             <DataGridTextColumn Binding="{Binding plaats}" Header="Plaats"/>
                             <DataGridTextColumn Binding="{Binding telefoonnummer}" Header="Telefoonnummer"/>
@@ -84,7 +88,7 @@
                     </DataGrid>
                 </Grid>
             </Grid>
-            <StackPanel Height="120">
+            <Grid Height="130">
                 <Grid Background="#d3e2ed">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -102,7 +106,8 @@
                     <TextBox x:Name="txtVoornaam" Grid.Row="1" Grid.Column="0"  Margin="5" materialDesign:HintAssist.Hint="Voornaam" Background="White"/>
                     <TextBox x:Name="txtFamilienaam"  Grid.Row="1" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="Achternaam" Background="White"/>
                     <TextBox x:Name="txtMail" Margin="5" Grid.Row="1" Grid.Column="2" materialDesign:HintAssist.Hint="E-mail" Background="White"/>
-                    <TextBox x:Name="txtGeboorte"  Grid.Row="1" Grid.Column="3" Margin="5" materialDesign:HintAssist.Hint="Geboorte datum" Background="White"/>
+                    <!--<TextBox x:Name="txtGeboorte"  Grid.Row="1" Grid.Column="3" Margin="5" materialDesign:HintAssist.Hint="Geboorte datum" Background="White"/>-->
+                    <DatePicker x:Name="dpGeboorte"  Grid.Row="1" Grid.Column="3" Margin="5" materialDesign:HintAssist.Hint="Kies een datum" Background="White"/>
                     <TextBox x:Name="txtNationaliteit"  Grid.Row="2" Grid.Column="0" Margin="5" materialDesign:HintAssist.Hint="Nationaliteit" Background="White"/>
 
                     <TextBox x:Name="txtPlaats"  Grid.Row="2" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="Plaats" Background="White"/>
@@ -115,7 +120,7 @@
                          FontSize="20"/>
 
                 </Grid>
-            </StackPanel>
+            </Grid>
 
         </StackPanel>
     </Grid>

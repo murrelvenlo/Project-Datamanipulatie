@@ -129,6 +129,7 @@
     <Content Include="Afbeelding\airplane.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Afbeelding\airplaneInTheSky.jpg" />
     <Resource Include="Afbeelding\flight.jpg" />
   </ItemGroup>
   <ItemGroup>

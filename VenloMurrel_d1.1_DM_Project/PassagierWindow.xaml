@@ -41,8 +41,8 @@
                     materialDesign:HintAssist.Hint="Achteraam" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
         <TextBox x:Name="txtEmail"   Margin="5" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="E-mailadres" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
-        <TextBox x:Name="txtGeboorte"   Margin="5" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Geboortedatum" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
+        <DatePicker x:Name="dpGeboorte"   Margin="5" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Geboortedatum"   Background="White" Width="110"/>
         <TextBox x:Name="txtNationaliteit"   Margin="5" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Nationaliteit" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
         <TextBox x:Name="txtPlaats"   Margin="5" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center"
