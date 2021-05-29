@@ -47,5 +47,17 @@ namespace VenloMurrel_d1._1_DM_Project
         {
             this.Close();
         }
+
+        public void Succes()
+        {
+            lblInhoud.Foreground = Brushes.Green;
+            
+        }
+        public void Fail()
+        {
+            lblInhoud.Foreground = Brushes.Red;
+            btnOk.Background = Brushes.Red;
+            
+        }
     }
 }

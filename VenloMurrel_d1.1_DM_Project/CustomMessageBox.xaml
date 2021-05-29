@@ -12,7 +12,8 @@
     <Border CornerRadius="15" BorderBrush="Aquamarine" BorderThickness="1">
         <Border.Background>
             <LinearGradientBrush>
-                <GradientStop Color="White" Offset="0.2"/>
+                <GradientStop Color="white" Offset="0.2"/>
+                <GradientStop Color="Aquamarine" Offset="1"/>
                 <GradientStop Color="LightBlue" Offset="0.6"/>
                 <GradientStop Color="LightSkyBlue" Offset="1"/>
             </LinearGradientBrush>
@@ -23,9 +24,9 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label x:Name="lblInhoud" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="lblInhoud" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontWeight="Bold"/>
 
-            <Button x:Name="btnOk" Content="Ok" Click="BtnOk_Click" Foreground="White"  Grid.Row="1" Width="50" Background="#142128" Opacity="0.5" BorderBrush="Black"/>
+            <Button x:Name="btnOk" Content="Ok" Click="BtnOk_Click" Foreground="White"  Grid.Row="1" Width="50" Background="#142128"  BorderBrush="Black"/>
         </Grid>
     </Border>
     

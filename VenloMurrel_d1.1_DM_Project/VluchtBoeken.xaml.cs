@@ -64,8 +64,6 @@ namespace VenloMurrel_d1._1_DM_Project
         private void BtnToonPassagier_Click(object sender, RoutedEventArgs e)
         {
             DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
-            
-            schuifbalkActiveren();
 
         }
 
@@ -144,17 +142,20 @@ namespace VenloMurrel_d1._1_DM_Project
                     else
                     {
                         CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet aangepast!");
+                        CustomMessageBoxStatic.CustomMessage.Fail();
                     }
                 }
                 else
                 {
                     CustomMessageBoxStatic.CustomMessage.Toon(passagier.Error);
+                    CustomMessageBoxStatic.CustomMessage.Fail();
                 }
 
             }
             else
             {
                 CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
+                CustomMessageBoxStatic.CustomMessage.Fail();
             }
 
         }
@@ -204,16 +205,19 @@ namespace VenloMurrel_d1._1_DM_Project
                     btnVerwijderenBevestigen.Visibility = Visibility.Hidden;
                     btnVerwijderenAnnuleren.Visibility = Visibility.Hidden;
                     CustomMessageBoxStatic.CustomMessage.Toon("Passagier is verwijderd!");
-                    
+                    CustomMessageBoxStatic.CustomMessage.Succes();
+
                 }
                 else
                 {
                     CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet verwijderd!");
+                    CustomMessageBoxStatic.CustomMessage.Fail();
                 }
             }
             else
             {
                 CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
+                CustomMessageBoxStatic.CustomMessage.Fail();
             }
         }
 
@@ -227,11 +231,6 @@ namespace VenloMurrel_d1._1_DM_Project
             this.Close();
         }
 
-        private void schuifbalkActiveren()
-        {
-            //ScrollViewer.SetHorizontalScrollBarVisibility(this.DataPassagiers, ScrollBarVisibility.Visible);
-            //ScrollViewer.SetVerticalScrollBarVisibility(this.DataPassagiers, ScrollBarVisibility.Visible);
-        }
 
         private void vlakkenLeegmaken()
         {
