@@ -48,7 +48,7 @@ namespace VenloMurrel_d1._1_DM_Project
             }
             if (columnName == "geboortedatum" && !DateTime.TryParse(dpGeboorte.Text, out DateTime geboortedatum))
             {
-                return "Geboortedatum moet in dateformat zijn!" + Environment.NewLine;
+                return "Geboortedatum moet ingevuld zijn!" + Environment.NewLine;
             }
             return "";
         }
