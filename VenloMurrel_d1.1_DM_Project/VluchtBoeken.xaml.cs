@@ -137,6 +137,7 @@ namespace VenloMurrel_d1._1_DM_Project
                         btnPassagierBijwerken.Visibility = Visibility.Hidden;
                         btnUpdateAnnuleren.Visibility = Visibility.Hidden;
                         vlakkenLeegmaken();
+                        DataPassagiers.Items.Refresh();
 
                     }
                     else
@@ -202,16 +203,18 @@ namespace VenloMurrel_d1._1_DM_Project
                     DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
                     vlakkenLeegmaken();
                     lblBevestiging.Visibility = Visibility.Hidden;
+                    
+                    MessageBox.Show("Passagier is verwijderd!");
                     btnVerwijderenBevestigen.Visibility = Visibility.Hidden;
                     btnVerwijderenAnnuleren.Visibility = Visibility.Hidden;
-                    CustomMessageBoxStatic.CustomMessage.Toon("Passagier is verwijderd!");
-                    CustomMessageBoxStatic.CustomMessage.Succes();
+                    DataPassagiers.Items.Refresh();
 
                 }
                 else
                 {
                     CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet verwijderd!");
                     CustomMessageBoxStatic.CustomMessage.Fail();
+                    DataPassagiers.Items.Refresh();
                 }
             }
             else

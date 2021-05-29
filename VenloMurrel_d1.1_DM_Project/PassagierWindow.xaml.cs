@@ -87,26 +87,23 @@ namespace VenloMurrel_d1._1_DM_Project
 
                     if (gelukt > 0)
                     {
-                        CustomMessageBoxStatic.CustomMessage.Toon("Passagier is toegevoegd!");
-                        CustomMessageBoxStatic.CustomMessage.Succes();
+                        
+                        MessageBox.Show("Passagier is toegevoegd!");
                         VlakkenLeegMaken();
                     }
                     else
                     {
-                        CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet toegevoeg!");
-                        CustomMessageBoxStatic.CustomMessage.Fail();
+                        MessageBox.Show("Passagier is niet toegevoeg!");
                     }
                 }
                 else
                 {
-                    CustomMessageBoxStatic.CustomMessage.Toon(passagier.Error);
-                    CustomMessageBoxStatic.CustomMessage.Fail();
+                    MessageBox.Show(passagier.Error);
                 }
             }
             else
             {
-                CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
-                CustomMessageBoxStatic.CustomMessage.Fail();
+                MessageBox.Show(foutmeldingen);
 
             }
         }

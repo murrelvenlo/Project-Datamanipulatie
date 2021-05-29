@@ -29,8 +29,8 @@ namespace VenloMurrel_d1._1_DM_Project
             this.Show();
             lblInhoud.Content = tekst;
             //om de content er niet uit te laten vallen;
-            this.Width += (lblInhoud.Width + 5);
-            this.Height += (lblInhoud.Height + 5);
+            this.Width += (lblInhoud.Width + 10);
+            this.Height += (lblInhoud.Height + 10);
         }
         public void Toon(string tekst, string titel)
         {
@@ -39,8 +39,8 @@ namespace VenloMurrel_d1._1_DM_Project
             this.Title = tekst;
 
             //om de content er niet uit te laten vallen;
-            this.Width += (lblInhoud.Width + 5);
-            this.Height += (lblInhoud.Height + 5);
+            this.Width += (lblInhoud.Width + 10);
+            this.Height += (lblInhoud.Height + 10);
         }
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
