@@ -29,12 +29,14 @@ namespace Vluchten_UnitTests
             //Arrange
             List<Vlucht> vluchten;
 
+
+
             //Act
             vluchten = DatabaseOperations.GewensteVluchtenZoeken("Amsterdam", "Paramaribo");
 
             //Asert
-            Assert.AreEqual(vluchten.Count, 1);
+            Assert.AreNotEqual(vluchten.Count, 0);
         }
-        
+
     }
 }

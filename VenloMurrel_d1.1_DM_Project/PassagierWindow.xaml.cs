@@ -29,8 +29,7 @@ namespace VenloMurrel_d1._1_DM_Project
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           //List<Passagier> passagiers = DatabaseOperations.PassagierOphalen();
-
+            Title = "Passagiers toevoegen";
             
         }
 
@@ -88,22 +87,22 @@ namespace VenloMurrel_d1._1_DM_Project
 
                     if (gelukt > 0)
                     {
-                        MessageBox.Show("Passagier is toegevoegd!");
+                        CustomMessageBoxStatic.CustomMessage.Toon("Passagier is toegevoegd!");
                        VlakkenLeegMaken();
                     }
                     else
                     {
-                        MessageBox.Show("Passagier is niet toegevoeg!");
+                        CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet toegevoeg!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show(passagier.Error);
+                    CustomMessageBoxStatic.CustomMessage.Toon(passagier.Error);
                 }
             }
             else
             {
-                MessageBox.Show(foutmeldingen);
+                CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
             }
         }
 

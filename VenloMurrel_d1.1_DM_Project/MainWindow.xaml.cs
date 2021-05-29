@@ -41,16 +41,17 @@ namespace VenloMurrel_d1._1_DM_Project
             }
             else if (!string.IsNullOrWhiteSpace(txtAankomst.Text))
             {
-                MessageBox.Show("Vanaf waar vertrekt u?");
+                //CustomMessageBox.Toon("Vanaf waar vertrekt u?");
+                CustomMessageBoxStatic.CustomMessage.Toon("vanaf waar vertrekt u?");
             }
             else if (!string.IsNullOrWhiteSpace(txtVertrek.Text))
             {
-                MessageBox.Show("Geef een bestemming in!");
+                CustomMessageBoxStatic.CustomMessage.Toon("Geef een bestemming in!");
             }
 
             else
             {
-                MessageBox.Show("De velden mogen niet leeg zijn!");
+                CustomMessageBoxStatic.CustomMessage.Toon("De velden mogen niet leeg zijn!");
             }
 
         }
@@ -64,5 +65,9 @@ namespace VenloMurrel_d1._1_DM_Project
             vluchtBoeken.Show();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Title = "Vluchten";
+        }
     }
 }

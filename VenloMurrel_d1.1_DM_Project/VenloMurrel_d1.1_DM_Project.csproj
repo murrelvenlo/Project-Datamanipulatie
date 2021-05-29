@@ -71,12 +71,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PassagierWindow.xaml.cs">
       <DependentUpon>PassagierWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="static\CustomMessageBoxStatic.cs" />
     <Compile Include="VluchtBoeken.xaml.cs">
       <DependentUpon>VluchtBoeken.xaml</DependentUpon>
     </Compile>
+    <Page Include="CustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +137,7 @@
     <Content Include="Afbeelding\airplane.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Afbeelding\reis.jpg" />
     <Resource Include="Afbeelding\airplaneInTheSky.jpg" />
     <Resource Include="Afbeelding\flight.jpg" />
   </ItemGroup>

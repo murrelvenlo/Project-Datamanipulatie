@@ -28,12 +28,12 @@ namespace Vluchten_DAL
         {
             using (VluchtenbeheerEntities flightsEntities = new VluchtenbeheerEntities())
             {
-                return flightsEntities.Vlucht
+                var query = flightsEntities.Vlucht
                     .Include(x => x.Luchthaven)
                     .Include(x => x.Luchthaven1)
                     .Where(x => x.Luchthaven1.stad.Contains(heen) && x.Luchthaven.stad.Contains(aankomst))
-                    .Include(x => x.Reserveringvluchten)
                     .ToList();
+                return query;
             }
         }
 

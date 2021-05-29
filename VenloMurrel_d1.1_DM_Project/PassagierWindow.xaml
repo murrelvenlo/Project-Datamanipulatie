@@ -13,45 +13,55 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="#0000FF"
         FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStyle="None"
         Title="PassagierWindow" Height="380" Width="400" Loaded="Window_Loaded">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <Border CornerRadius="15" BorderBrush="Aquamarine" BorderThickness="1">
+        <Border.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="Purple" Offset="0.2"/>
+                <GradientStop Color="LightBlue" Offset="0.6"/>
+                <GradientStop Color="#0000FF" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <TextBlock HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="2" Grid.Column="0"  Grid.Row="0"
+            <TextBlock HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="2" Grid.Column="0"  Grid.Row="0"
     Style="{StaticResource MaterialDesignHeadline6TextBlock}">
   Voeg hier een passagier toe
-        </TextBlock>
-        <TextBox x:Name="txtpNummer"   Margin="5" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
+            </TextBlock>
+            <TextBox x:Name="txtpNummer"   Margin="5" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Passagiersnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
-        <TextBox x:Name="txtVoornaam"   Margin="5" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
+            <TextBox x:Name="txtVoornaam"   Margin="5" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Voornaam" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
-        <TextBox x:Name="txtNaam"   Margin="5" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"
+            <TextBox x:Name="txtNaam"   Margin="5" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Achteraam" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
-        <TextBox x:Name="txtEmail"   Margin="5" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"
+            <TextBox x:Name="txtEmail"   Margin="5" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="E-mailadres" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
-        <DatePicker x:Name="dpGeboorte"   Margin="5" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"
+            <DatePicker x:Name="dpGeboorte"   Margin="5" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Geboortedatum"   Background="White" Width="110"/>
-        <TextBox x:Name="txtNationaliteit"   Margin="5" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"
+            <TextBox x:Name="txtNationaliteit"   Margin="5" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Nationaliteit" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
-        <TextBox x:Name="txtPlaats"   Margin="5" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center"
+            <TextBox x:Name="txtPlaats"   Margin="5" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Plaats" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
-        <TextBox x:Name="txtTelefoonnummer"   Margin="5" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center"
+            <TextBox x:Name="txtTelefoonnummer"   Margin="5" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center"
                     materialDesign:HintAssist.Hint="Telefoonnummer" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Background="White" Width="110"/>
-        <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="5" Grid.Column="0" Grid.Row="5" Click="BtnToevoegen_Click"/>
-        <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="5" Click="BtnAnnuleren_Click" Grid.Column="1" Grid.Row="5"/>
-        <Button x:Name="btnSluiten" Content="Sluiten" Margin="5" Click="BtnSluiten_Click" Grid.ColumnSpan="2" Grid.Row="6"/>
+            <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="5" Grid.Column="0" Grid.Row="5" Click="BtnToevoegen_Click"/>
+            <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="5" Click="BtnAnnuleren_Click" Grid.Column="1" Grid.Row="5"/>
+            <Button x:Name="btnSluiten" Content="Sluiten" Margin="5" Click="BtnSluiten_Click" Grid.ColumnSpan="2" Grid.Row="6"/>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

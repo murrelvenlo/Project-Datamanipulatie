@@ -16,7 +16,7 @@
         Title="VluchtBoeken" Height="680" Width="1300" Loaded="Window_Loaded">
 
     <Window.Background>
-        <ImageBrush ImageSource="afbeelding/airplaneInTheSky.jpg"></ImageBrush>
+        <ImageBrush ImageSource="afbeelding/reis.jpg"></ImageBrush>
     </Window.Background>
     
     <Grid>
@@ -74,7 +74,17 @@
             </Grid>
             <Grid Height="340">
                 <Grid>
-                    <DataGrid x:Name="DataPassagiers" AutoGenerateColumns="False" IsReadOnly="True"  SelectionChanged="DataPassagiers_SelectionChanged">
+                    <DataGrid x:Name="DataPassagiers" AutoGenerateColumns="False" IsReadOnly="True"  SelectionChanged="DataPassagiers_SelectionChanged" Foreground="white" Background="#233C4F">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#142128" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Padding" Value="10"/>
+                                <Setter Property="BorderThickness" Value="0,0,2,0"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="BorderBrush" Value="#fff"/>
+                            </Style>
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding id}" Header="Passagiersnummer"/>
                             <DataGridTextColumn Binding="{Binding voornaam}" Header="Voornaam"/>

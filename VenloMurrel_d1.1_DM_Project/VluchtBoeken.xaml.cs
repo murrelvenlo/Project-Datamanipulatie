@@ -28,6 +28,8 @@ namespace VenloMurrel_d1._1_DM_Project
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Title = "Gedetailleerde informatie over reservering en passagiers";
+
             lblVluchtInformatie.Content = "";
             List<Passagier> passagiers = DatabaseOperations.PassagiersOphalen();
             foreach (var passagier in passagiers)
@@ -46,9 +48,10 @@ namespace VenloMurrel_d1._1_DM_Project
             lblBevestiging.Visibility = Visibility.Hidden;
             btnVerwijderenBevestigen.Visibility = Visibility.Hidden;
             btnVerwijderenAnnuleren.Visibility = Visibility.Hidden;
-            btnPassagierBijwerken.Visibility = Visibility.Hidden;
             btnPassagierVerwijderen.Visibility = Visibility.Hidden;
+            btnPassagierBijwerken.Visibility = Visibility.Hidden;
             btnUpdateAnnuleren.Visibility = Visibility.Hidden;
+
         }
 
         private void BtnVerderGaan(object sender, RoutedEventArgs e)
@@ -57,18 +60,11 @@ namespace VenloMurrel_d1._1_DM_Project
             pgs.Show();
         }
 
-        //private void BtnGeboekteVluchten_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //datagridReserveringen.ItemsSource = DatabaseOperations.AlleVluchten();
-        //}
-
-       
 
         private void BtnToonPassagier_Click(object sender, RoutedEventArgs e)
         {
             DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
-            btnPassagierBijwerken.Visibility = Visibility.Visible;
-            btnPassagierVerwijderen.Visibility = Visibility.Visible;
+            
             schuifbalkActiveren();
 
         }
@@ -85,6 +81,11 @@ namespace VenloMurrel_d1._1_DM_Project
                 dpGeboorte.Text = passagier.geboortedatum.ToLongDateString();
                 txtPlaats.Text = passagier.plaats;
                 txtTelefoonnummer.Text = passagier.telefoonnummer;
+
+                btnUpdateAnnuleren.Visibility = Visibility.Visible;
+
+                btnPassagierBijwerken.Visibility = Visibility.Visible;
+                btnPassagierVerwijderen.Visibility = Visibility.Visible;
             }
 
         }
@@ -104,22 +105,20 @@ namespace VenloMurrel_d1._1_DM_Project
             }
             else
             {
-                MessageBox.Show(foutmeldingen);
+                CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
             }
         }
 
         private void BtnPassagierBijwerken_Click(object sender, RoutedEventArgs e)
         {
-            btnUpdateAnnuleren.Visibility = Visibility.Visible;
-
-
+            
             string foutmeldingen = Valideer("Passagier");
 
             if (string.IsNullOrWhiteSpace(foutmeldingen))
             {
                 Passagier passagier = DataPassagiers.SelectedItem as Passagier;
-
                 
+
 
                 passagier.achternaam = txtFamilienaam.Text;
                 passagier.voornaam = txtVoornaam.Text;
@@ -137,24 +136,25 @@ namespace VenloMurrel_d1._1_DM_Project
                     if (gelukt > 0)
                     {
                         DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
-                        lblBevestiging.Visibility = Visibility.Hidden;
+                        btnPassagierBijwerken.Visibility = Visibility.Hidden;
+                        btnUpdateAnnuleren.Visibility = Visibility.Hidden;
                         vlakkenLeegmaken();
 
                     }
                     else
                     {
-                        MessageBox.Show("Passagier is niet aangepast!");
+                        CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet aangepast!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show(passagier.Error);
+                    CustomMessageBoxStatic.CustomMessage.Toon(passagier.Error);
                 }
 
             }
             else
             {
-                MessageBox.Show(foutmeldingen);
+                CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
             }
 
         }
@@ -201,17 +201,19 @@ namespace VenloMurrel_d1._1_DM_Project
                     DataPassagiers.ItemsSource = DatabaseOperations.PassagierOphalen();
                     vlakkenLeegmaken();
                     lblBevestiging.Visibility = Visibility.Hidden;
-                    MessageBox.Show("Passagier is verwijderd!");
+                    btnVerwijderenBevestigen.Visibility = Visibility.Hidden;
+                    btnVerwijderenAnnuleren.Visibility = Visibility.Hidden;
+                    CustomMessageBoxStatic.CustomMessage.Toon("Passagier is verwijderd!");
                     
                 }
                 else
                 {
-                    MessageBox.Show("Passagier is niet verwijderd!");
+                    CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet verwijderd!");
                 }
             }
             else
             {
-                MessageBox.Show(foutmeldingen);
+                CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
             }
         }
 
