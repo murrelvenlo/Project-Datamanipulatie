@@ -31,29 +31,12 @@ namespace VenloMurrel_d1._1_DM_Project
 
         }
 
-        public void Toon(string tekst, string titel)
-        {
-            lblInhoud.Content = tekst; 
-            this.ShowDialog();
-
-        }
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        public void Succes()
-        {
-            lblInhoud.Foreground = Brushes.Green;
-            
-        }
-        public void Fail()
-        {
-            lblInhoud.Foreground = Brushes.Red;
-            btnOk.Background = Brushes.Red;
-            
-        }
         
         
     }
