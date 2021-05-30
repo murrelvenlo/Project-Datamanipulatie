@@ -38,10 +38,6 @@ namespace Vluchten_DAL
                 {
                     return "De plaats is vereist!" + Environment.NewLine;
                 }
-                if (columnName == "id" && id <= 0)
-                {
-                    return "Het id moet een positief getal zijn!" + Environment.NewLine;
-                }
                 return "";
             }
         }

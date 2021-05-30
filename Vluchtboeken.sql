@@ -1,4 +1,4 @@
-﻿/*
+﻿
 ALTER TABLE	Vluchtboeking.Reservering DROP CONSTRAINT FK_Reservering_Passagier;
 ALTER TABLE	Vluchtboeking.Reservering DROP CONSTRAINT FK_Reservering_Klasse;
 ALTER TABLE Vluchtboeking.Reserveringvlucht DROP CONSTRAINT FK_Reserveringvlucht_Vlucht;
@@ -11,7 +11,7 @@ ALTER TABLE Vluchtboeking.ToestelKlasse DROP CONSTRAINT ToestelKlasse_Toestel;
 ALTER TABLE Vluchtboeking.ToestelStoel DROP CONSTRAINT ToestelStoel_Toestel;
 ALTER TABLE Vluchtboeking.ToestelStoel DROP CONSTRAINT ToestelStoel_SToel;
 GO
-*/
+
 
 
 DROP TABLE	Vluchtboeking.Passagier;

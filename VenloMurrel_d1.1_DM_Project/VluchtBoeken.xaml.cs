@@ -143,20 +143,17 @@ namespace VenloMurrel_d1._1_DM_Project
                     else
                     {
                         CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet aangepast!");
-                        CustomMessageBoxStatic.CustomMessage.Fail();
                     }
                 }
                 else
                 {
                     CustomMessageBoxStatic.CustomMessage.Toon(passagier.Error);
-                    CustomMessageBoxStatic.CustomMessage.Fail();
                 }
 
             }
             else
             {
                 CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
-                CustomMessageBoxStatic.CustomMessage.Fail();
             }
 
         }
@@ -204,7 +201,7 @@ namespace VenloMurrel_d1._1_DM_Project
                     vlakkenLeegmaken();
                     lblBevestiging.Visibility = Visibility.Hidden;
                     
-                    MessageBox.Show("Passagier is verwijderd!");
+                    CustomMessageBoxStatic.CustomMessage.Toon("Passagier is verwijderd!");
                     btnVerwijderenBevestigen.Visibility = Visibility.Hidden;
                     btnVerwijderenAnnuleren.Visibility = Visibility.Hidden;
                     DataPassagiers.Items.Refresh();
@@ -213,14 +210,12 @@ namespace VenloMurrel_d1._1_DM_Project
                 else
                 {
                     CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet verwijderd!");
-                    CustomMessageBoxStatic.CustomMessage.Fail();
                     DataPassagiers.Items.Refresh();
                 }
             }
             else
             {
                 CustomMessageBoxStatic.CustomMessage.Toon(foutmeldingen);
-                CustomMessageBoxStatic.CustomMessage.Fail();
             }
         }
 

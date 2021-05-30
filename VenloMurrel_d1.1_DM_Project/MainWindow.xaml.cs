@@ -43,18 +43,15 @@ namespace VenloMurrel_d1._1_DM_Project
             {
                 //CustomMessageBox.Toon("Vanaf waar vertrekt u?");
                 CustomMessageBoxStatic.CustomMessage.Toon("vanaf waar vertrekt u?");
-                CustomMessageBoxStatic.CustomMessage.Fail();
             }
             else if (!string.IsNullOrWhiteSpace(txtVertrek.Text))
             {
                 CustomMessageBoxStatic.CustomMessage.Toon("Geef een bestemming in!");
-                CustomMessageBoxStatic.CustomMessage.Fail();
             }
 
             else
             {
                 CustomMessageBoxStatic.CustomMessage.Toon("De velden mogen niet leeg zijn!");
-                CustomMessageBoxStatic.CustomMessage.Fail();
             }
 
         }

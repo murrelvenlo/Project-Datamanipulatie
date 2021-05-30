@@ -10,8 +10,9 @@
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
-        Background="#0000FF"
+        TextOptions.TextRenderingMode="Auto"
+        AllowsTransparency="True"
+        Background="Transparent"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStyle="None"
         Title="PassagierWindow" Height="380" Width="400" Loaded="Window_Loaded">

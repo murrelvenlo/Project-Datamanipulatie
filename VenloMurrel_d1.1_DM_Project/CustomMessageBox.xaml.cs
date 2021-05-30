@@ -26,21 +26,19 @@ namespace VenloMurrel_d1._1_DM_Project
 
         public void Toon(string tekst)
         {
-            this.Show();
-            lblInhoud.Content = tekst;
-            //om de content er niet uit te laten vallen;
-            this.Width += (lblInhoud.Width + 10);
-            this.Height += (lblInhoud.Height + 10);
+            
+            lblInhoud.Content = BerichtAanpassen(tekst);
+            this.ShowDialog();
+
         }
+
         public void Toon(string tekst, string titel)
         {
-            this.Show();
-            lblInhoud.Content = tekst;
-            this.Title = tekst;
+            
+            lblInhoud.Content = BerichtAanpassen(tekst);
+            this.Title = titel; 
+            this.ShowDialog();
 
-            //om de content er niet uit te laten vallen;
-            this.Width += (lblInhoud.Width + 10);
-            this.Height += (lblInhoud.Height + 10);
         }
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
@@ -58,6 +56,30 @@ namespace VenloMurrel_d1._1_DM_Project
             lblInhoud.Foreground = Brushes.Red;
             btnOk.Background = Brushes.Red;
             
+        }
+        //om de content er niet uit te laten vallen;
+        public string BerichtAanpassen(string bericht)
+        {
+            int count = 0; //Startpositie --> zolang het bericht groter of gelijk is aan de count: positie verhogen
+
+            while (count <= bericht.Length)
+            {
+                if (bericht.Length > 30)
+                {
+                    count += 30;
+                }
+                else if (bericht.Length > 60)
+                {
+                    count += 60;
+                }
+                else { count += 90; }
+                if (count > bericht.Length) //Als de count tocht groter is dan het bericht, wordt de lus verbroken
+                {
+                    break;
+                }
+                /*   bericht = bericht.Insert(count, "\n");*/ //bericht gelijkstellen aan het nieuwe bericht met nieuwe regel op de positie van count
+            }
+            return bericht;
         }
     }
 }

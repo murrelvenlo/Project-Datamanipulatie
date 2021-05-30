@@ -69,42 +69,39 @@ namespace VenloMurrel_d1._1_DM_Project
             foutmeldingen += Valideer("geboortedatum");
 
             //foutmeldingen += Valideer();
-            if (string.IsNullOrWhiteSpace(foutmeldingen))
-            {
+       
                 Passagier passagier = new Passagier();
                 passagier.achternaam = txtNaam.Text;
                 passagier.voornaam = txtVoornaam.Text;
                 passagier.emailadres = txtEmail.Text;
                 passagier.nationaliteit = txtNationaliteit.Text;
-                passagier.geboortedatum = DateTime.Parse(dpGeboorte.Text);
+
                 passagier.plaats = txtPlaats.Text;
-                passagier.id = int.Parse(txtpNummer.Text);
+
                 passagier.telefoonnummer = txtTelefoonnummer.Text;
 
-                if (passagier.IsGeldig())
+                if (passagier.IsGeldig() && string.IsNullOrWhiteSpace(foutmeldingen))
                 {
-                    int gelukt = DatabaseOperations.PassagierToevoegen(passagier);
+                passagier.id = int.Parse(txtpNummer.Text);
+                passagier.geboortedatum = DateTime.Parse(dpGeboorte.Text);
+                int gelukt = DatabaseOperations.PassagierToevoegen(passagier);
 
                     if (gelukt > 0)
                     {
                         
-                        MessageBox.Show("Passagier is toegevoegd!");
+                        CustomMessageBoxStatic.CustomMessage.Toon("Passagier is toegevoegd!");
                         VlakkenLeegMaken();
                     }
                     else
                     {
-                        MessageBox.Show("Passagier is niet toegevoeg!");
+                        CustomMessageBoxStatic.CustomMessage.Toon("Passagier is niet toegevoegd!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show(passagier.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show(foutmeldingen);
 
+                CustomMessageBoxStatic.CustomMessage.Toon(passagier.Error + foutmeldingen);
+                
             }
         }
 

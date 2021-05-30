@@ -8,7 +8,7 @@
         Title="CustomMessageBox" Height="200" Width="200" 
         AllowsTransparency="True" 
         Background="Transparent"
-        WindowStyle="None" ResizeMode="NoResize">
+        WindowStyle="None" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
     <Border CornerRadius="15" BorderBrush="Aquamarine" BorderThickness="1">
         <Border.Background>
             <LinearGradientBrush>

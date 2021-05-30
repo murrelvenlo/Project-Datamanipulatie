@@ -14,10 +14,8 @@ namespace VenloMurrel_d1._1_DM_Project
         {
             get
             {
-                if (_customMessagBoxStatic == null)
-                {
+
                     _customMessagBoxStatic = new CustomMessageBox();
-                }
                 
                 return _customMessagBoxStatic;
             }
